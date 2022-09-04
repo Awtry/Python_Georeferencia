@@ -1,0 +1,33 @@
+{% extends 'layout.html' %} 
+
+{% block title %} tittle {% endblock %}
+
+{% block content %}
+<!-- Estilo del mapa -->
+<style>
+    #map {
+        width: 100%;
+        height: 100vh;
+    }
+</style>
+
+<!-- Mapa -->
+<div class="jumbotron" id="map" style="border-style: solid; border-color: green;"></div>
+
+<!-- Scrip para el manejo del map -->
+<script>
+    coord = [21.172917917932295, -101.7349968862179]
+
+    var map = L.map('map').setView(coord, 13);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    L.marker(coord).addTo(map)
+        .bindPopup('MK was here.')
+        .openPopup();
+
+</script>
+
+{% endblock %}
