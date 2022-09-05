@@ -24,6 +24,7 @@ urlpatterns = [
     path('mapa/', views.mapa, name='mapa'),
     path('metricas/', views.metricas, name='metricas'),
     path('graficos/', views.graficos, name='graficos'),
+    path('prueba/', views.prueba, name='prueba'),
 
     #URL'S STYLE DEL PROYECTO
 

@@ -3,5 +3,10 @@
 {% block title %} tittle {% endblock %}
 
 {% block content %}
-<p>Aquí van las métricas</p>
+<p>Área de pruebas</p>
+<ul>
+    {% for x in datos %}
+    <li>{{ x }}</li>
+    {% endfor %}
+</ul>
 {% endblock %}
