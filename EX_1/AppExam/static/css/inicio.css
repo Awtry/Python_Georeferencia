@@ -1,0 +1,85 @@
+@font-face {
+    font-family: SantanaBold;
+    src: url(../fonts/Santana-Black.ttf);
+}
+
+@font-face {
+    font-family: Santana;
+    src: url(../fonts/Santana.ttf);
+}
+
+/* Background */
+
+body{
+    background-color: lightgray;
+}
+
+/* Termina Background */
+
+/* Sección de Navbar */
+
+.titulo {
+    font-size: 50px;
+    color: #E3E1DE
+}
+
+.titulo:hover {
+    color: #7AF9CA
+}
+
+.navbar-background {
+    background-color: #1D322C;
+}
+
+.navbar-collapse .navbar-nav > li > a {
+    color: #E3E1DE; 
+    font-family: SantanaBold
+}
+
+.navbar-collapse .navbar-nav > li > a:hover {
+    color: #7AF9CA;
+    font-family: SantanaBold
+}
+
+/* Animación del Navbar */
+nav ul li a,
+nav ul li a:after,
+nav ul li a:before {
+  transition: all .5s;
+}
+
+nav.stroke ul li a{
+  position: relative;
+}
+nav.stroke ul li a:after{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background: #aaa;
+  height: 1px;
+}
+nav.stroke ul li a:hover:after {
+  width: 100%;
+}
+
+/* Termina sección de NavBar */
+
+
+/*Carrusel */
+.carrusel {
+    background-color: lightgray;
+}
+
+/*Ocultar botones de Carrusel*/
+.carousel-control-prev, .carousel-control-prev:hover, .carousel-control-next, .carousel-control-next:hover {
+    opacity: 0;
+    background-color: transparent;
+    border-style: none;
+}
+
+/* Termina carrusel */

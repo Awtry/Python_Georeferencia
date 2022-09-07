@@ -21,6 +21,7 @@
     <!-- CSS LOCAL -->
    <link rel="stylesheet" type="text/css" href="{%static 'css/styleMapa.css'%}"/>
    <link rel="stylesheet" type="text/css" href="{%static 'css/styleStarbucks.css'%}"/>
+   <link rel="stylesheet" type="text/css" href="{% static 'css/inicio.css' %}"/>
 
     <!-- MAPA -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
@@ -29,8 +30,8 @@
     
 
     <!-- Barra de navegación -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/">*Nombre del proyecto*</a>
+    <nav class="navbar navbar-expand-lg navbar-background"  >
+      <img src="{% static 'images/SBPNG.PNG' %}" style="width: 6%; height: 6%; margin-right: 10px;" >
       <button
         class="navbar-toggler"
         type="button"
@@ -44,28 +45,30 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/"
-              >Inicio <span class="sr-only">(current)</span></a
-            >
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="/mapa"
-              >Mapa<span class="sr-only"></span
-            ></a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="/metricas"
-              >Metrica <span class="sr-only">(current)</span></a
-            >
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="/graficos"
-              >Graficos <span class="sr-only">(current)</span></a
-            >
-          </li>
-        </ul>
+        <nav class="stroke">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/"
+                >Inicio <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/mapa"
+                >Mapa<span class="sr-only"></span
+              ></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/metricas"
+                >Métrica <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/graficos"
+                >Gráficos <span class="sr-only">(current)</span></a
+              >
+            </li>
+          </ul>
+        </nav>
       </div>
     </nav>
   </head>
