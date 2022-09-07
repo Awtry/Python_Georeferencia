@@ -1,1 +1,6 @@
 #map { height: 180px; }
+
+.prueba, #prueba 
+{ 
+    background-color: red;
+}

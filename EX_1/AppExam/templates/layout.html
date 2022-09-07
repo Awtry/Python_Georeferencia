@@ -19,7 +19,8 @@
     />
 
     <!-- CSS LOCAL -->
-   <link rel="stylesheet" type="text/css" href="/EX_1/AppExam/static/css/styleMapa.css"/>
+   <link rel="stylesheet" type="text/css" href="{%static 'css/styleMapa.css'%}"/>
+   <link rel="stylesheet" type="text/css" href="{%static 'css/styleStarbucks.css'%}"/>
 
     <!-- MAPA -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
@@ -98,6 +99,7 @@
 <div id="content">
   <!-- Para traer bloques de template -->
   {% block content %} 
+
   
   {% endblock %}
 </div>

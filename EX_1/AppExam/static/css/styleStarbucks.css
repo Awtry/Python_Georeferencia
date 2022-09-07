@@ -1,0 +1,17 @@
+@font-face {
+    font-family: SantanaBold;
+    src: url(../fonts/Santana-Black.ttf);
+}
+
+@font-face {
+    font-family: Santana;
+    src: url(../fonts/Santana.ttf);
+}
+
+h1,h2,h3 {
+    font-family: SantanaBold
+}
+
+p {
+    font-family: Santana;
+}
