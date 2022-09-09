@@ -43,11 +43,10 @@ def prueba(request):
     abs_file_path = os.path.join(script_dir, rel_path)
     #current_file ="Personas.csv"
     #file = open(abs_file_path+current_file,'r')
-    columns=['Nombre','Edad']
+    columns=['location']
     datos = pd.read_csv(rel_path , sep=';')
     newData = pd.DataFrame(datos, columns)
-    newData.head(2)
-    newData.columns(2)
+    
 
     #Experimental
     #COLUMNS = ['age','workclass', 'fnlwgt', 'education', 'education_num', 'marital',

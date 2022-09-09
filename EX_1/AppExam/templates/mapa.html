@@ -14,7 +14,7 @@
 <!-- Mapa -->
 <form id="elemento" class="form">
     <input id="coord"  value= "{{listaJson}}">
-    <input type="button" name="enviar" value="Enviar" onclick="GUARDAMELA();">
+    <input type="button" name="enviar" value="Enviar" onload="GUARDAMELA();">
 </form>
 <div class="jumbotron" id="map" style="border-style: solid; border-color: green;"></div>
 <p>{{listaJson}}</p>
@@ -22,6 +22,9 @@
 <!-- Scrip para el manejo del map -->
 
 <script>
+    window.onload = function(){
+        GUARDAMELA();
+    };
 
      function GUARDAMELA(){
 
@@ -38,8 +41,8 @@
 
         for (let i = 0; i < laLista.length; i++) {
             
-           // L.marker([51.5, -0.09], {icon: starbucksIcon}).addTo(map).bindPopup("Hello perro.");
-            L.marker([Mia[i]], {icon: starbucksIcon}).addTo(map).bindPopup("Hello perro.");
+           //L.marker([51.5, -0.09], {icon: starbucksIcon}).addTo(map).bindPopup("Hello perro.");
+            L.marker([Mia[i][0], Mia[i][1]], {icon: starbucksIcon}).addTo(map).bindPopup("Hello perro.");
             console.log("Interno: " + i + " Dato: " + Mia[i]);
         }
     }
