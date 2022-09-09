@@ -12,7 +12,7 @@
 </style>
 
 <!-- Mapa -->
-<form class="form">
+<form id="elemento" class="form">
     <input id="coord"  value= "{{listaJson}}">
     <input type="button" name="enviar" value="Enviar" onclick="GUARDAMELA();">
 </form>
@@ -23,17 +23,24 @@
 
 <script>
 
-   async function GUARDAMELA(){
-        var laLista = await document.getElementById('coord').value;
-        let tam = laLista.length;
-        alert(laLista)
-        console.log(laLista)
-        console.log(laLista[0][1])
+     function GUARDAMELA(){
+
+        var laLista =  document.getElementById('coord').value;
+        var tam = laLista.length;
+        var Mia = JSON.parse(laLista);
+
+
+        console.log("El tamaño de la cosa: " + tam)
+        //console.log(laLista)
+        console.log(Mia)
+        //.log(laLista[0][1])
 
 
         for (let i = 0; i < laLista.length; i++) {
             
-             L.marker(laLista[0][1], {icon: starbucksIcon}).addTo(map).bindPopup("Hello perro.");
+           // L.marker([51.5, -0.09], {icon: starbucksIcon}).addTo(map).bindPopup("Hello perro.");
+            L.marker([Mia[i]], {icon: starbucksIcon}).addTo(map).bindPopup("Hello perro.");
+            console.log("Interno: " + i + " Dato: " + Mia[i]);
         }
     }
 

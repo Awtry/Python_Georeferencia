@@ -65,7 +65,7 @@ def prueba(request):
 
 def cargarMapa(request):
 
-    listaCoordenadas = [[42.51,1.53],[25.42,55.47],[24.4,54.49],[24.48,54.38]]
+    listaCoordenadas = [[51.5, -0.09],[25.42, 55.47],[24.4, 54.49],[24.48, 54.38]]
 
     listaJson = json.dumps(listaCoordenadas)
 
