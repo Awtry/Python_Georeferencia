@@ -1,12 +1,23 @@
-{% extends 'layout.html' %} 
-
-{% block title %} tittle {% endblock %}
+{% extends 'layout.html' %} {% block title %} tittle {% endblock %}
+<p>Área de pruebas</p>
 
 {% block content %}
-<p>Área de pruebas</p>
-<ul>
-    {% for x in datos %}
-    <li>{{ x }}</li>
-    {% endfor %}
-</ul>
+<table>
+    <tr>
+        {% for col in df.columns %}
+          <td>
+            {{col}}
+          </td>
+        {% endfor %}
+      </tr>
+        {% for index, row in df.iterrows %}
+          <tr>
+            {% for cell in row %}
+              <td>
+                {{cell}}
+              </td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+</table>
 {% endblock %}

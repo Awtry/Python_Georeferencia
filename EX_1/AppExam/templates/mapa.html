@@ -12,10 +12,33 @@
 </style>
 
 <!-- Mapa -->
+<form class="form">
+    <input id="coord"  value= "{{listaJson}}">
+    <input type="button" name="enviar" value="Enviar" onclick="GUARDAMELA();">
+</form>
 <div class="jumbotron" id="map" style="border-style: solid; border-color: green;"></div>
+<p>{{listaJson}}</p>
 
 <!-- Scrip para el manejo del map -->
+
 <script>
+
+   async function GUARDAMELA(){
+        var laLista = await document.getElementById('coord').value;
+        let tam = laLista.length;
+        alert(laLista)
+        console.log(laLista)
+        console.log(laLista[0][1])
+
+
+        for (let i = 0; i < laLista.length; i++) {
+            
+             L.marker(laLista[0][1], {icon: starbucksIcon}).addTo(map).bindPopup("Hello perro.");
+        }
+    }
+
+   // var listaCoordenadas = JSON.parse("{{listaJson|escapejs}}");
+
     coord = [21.172917917932295, -101.7349968862179]
 
     var map = L.map('map').setView(coord, 13);
@@ -24,9 +47,24 @@
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    L.marker(coord).addTo(map)
-        .bindPopup('MK was here.')
-        .openPopup();
+    var LeafIcon = L.Icon.extend({
+        options: {
+            //shadowUrl: 'leaf-shadow.png',
+            iconSize:     [35, 35],
+            /*shadowSize:   [50, 64],
+            iconAnchor:   [22, 94],
+            shadowAnchor: [4, 62],
+            popupAnchor:  [-3, -76]*/
+        }
+    });
+
+    L.icon = function(options){
+        return new L.Icon(options);
+    }
+
+    var starbucksIcon = new LeafIcon({iconUrl: '../static/image/starbucks.png'})
+
+    
 
 </script>
 
