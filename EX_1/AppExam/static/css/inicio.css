@@ -8,13 +8,13 @@
     src: url(../fonts/Santana.ttf);
 }
 
-/* Background */
+/*Sección de background */
 
-body{
+body {
     background-color: lightgray;
 }
 
-/* Termina Background */
+/*Termina sección de background*/
 
 /* Sección de Navbar */
 
@@ -60,7 +60,7 @@ nav.stroke ul li a:after{
   width: 0%;
   content: '.';
   color: transparent;
-  background: #aaa;
+  background: rgb(170, 170, 170);
   height: 1px;
 }
 nav.stroke ul li a:hover:after {
@@ -83,3 +83,35 @@ nav.stroke ul li a:hover:after {
 }
 
 /* Termina carrusel */
+
+/* Sección del body */
+
+.bloqueFoto{
+    background-color: lightgray;
+    margin-top: -70px;
+}
+
+.fotos {
+    margin-bottom: 30px;
+}
+
+/* Termina sección del body*/
+
+/* Sección del footer */
+
+.footer{
+    background-color: #1D322C;
+    color:#E3E1DE;
+}
+
+.separador {
+    margin-top: 30px;
+    font-family: SantanaBold;
+}
+
+.separador > p > a {
+    font-family: Santana;
+    color: #E3E1DE;
+}
+
+/* Termina sección del footer */
