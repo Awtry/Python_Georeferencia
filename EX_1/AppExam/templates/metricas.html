@@ -1,12 +1,14 @@
 {% extends 'layout.html' %} 
+{% load static %} 
 
-{% block title %} tittle {% endblock %}
+{% block title %} Métricas {% endblock %}
 
 {% block content %}
-<p>Área de pruebas</p>
-<ul>
-    {% for x in datos %}
-    <li>{{ x }}</li>
-    {% endfor %}
-</ul>
+<!-- CSS LOCAL -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/inicio.css' %}" />
+
+
+<p>Metricas</p>
+<p>Sucursales No servicio: {{noServicioHoras}}</p>
+
 {% endblock %}
