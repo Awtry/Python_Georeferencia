@@ -117,6 +117,11 @@ nav.stroke ul li a:hover:after {
     color: #E3E1DE;
 }
 
+.separador > p > a {
+    color: #e3e1deb0;
+    
+}
+
 .nav-link{
     letter-spacing: 3px;
     font-style: normal;
