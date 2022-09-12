@@ -4,6 +4,7 @@
 
 {% block content %}
 <!-- Estilo del mapa -->
+
 <style>
     #map {
         width: 100%;
@@ -11,11 +12,40 @@
     }
 </style>
 
+<div style="padding: 0; margin:0">
+    <div class="row" style="padding: 0; margin:0; width: 100%;">
+        <div class="col-5 overflow-auto" style="background-color: white;">
+            <div class="card" style="width:100%; margin-top: 2vh; margin-left: 0;">
+                <div class="listCard">
+                    <h4>LA ANTORCHA</h4>
+                    <p>Lorem ipsum #000, col lorem ipsum</p>
+                </div>
+              </div>
+        </div>
+        <div class="col-7" id="map">
+         
+        </div>
+    </div>
+</div>
+
+
 <!-- Mapa -->
-<div class="jumbotron" id="map" style="border-style: solid; border-color: green;"></div>
+
 
 <!-- Scrip para el manejo del map -->
 <script>
+    //Marcador personalizado
+    var greenIcon = L.icon({
+        iconUrl: 'images/icons/',
+        shadowUrl: 'leaf-shadow.png',
+
+        iconSize:     [38, 95], // size of the icon
+        shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+        shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    });
+
     coord = [21.172917917932295, -101.7349968862179]
 
     var map = L.map('map').setView(coord, 13);

@@ -19,7 +19,9 @@
     />
 
     <!-- CSS LOCAL -->
-   <link rel="stylesheet" type="text/css" href="/EX_1/AppExam/static/css/styleMapa.css"/>
+   <link rel="stylesheet" type="text/css" href="{%static 'css/styleMapa.css'%}"/>
+   <link rel="stylesheet" type="text/css" href="{%static 'css/styleStarbucks.css'%}"/>
+   <link rel="stylesheet" type="text/css" href="{% static 'css/inicio.css' %}"/>
 
     <!-- MAPA -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
@@ -28,8 +30,8 @@
     
 
     <!-- Barra de navegación -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/">*Nombre del proyecto*</a>
+    <nav class="navbar navbar-expand-lg navbar-background divShadow"  >
+      <img src="{% static 'images/SBPNG.PNG' %}" style="width: 6vh; height: 6vh; margin: 8px; margin-right: 12px;" >
       <button
         class="navbar-toggler"
         type="button"
@@ -43,28 +45,30 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/"
-              >Inicio <span class="sr-only">(current)</span></a
-            >
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="/mapa"
-              >Mapa<span class="sr-only"></span
-            ></a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="/metricas"
-              >Metrica <span class="sr-only">(current)</span></a
-            >
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="/graficos"
-              >Graficos <span class="sr-only">(current)</span></a
-            >
-          </li>
-        </ul>
+        <nav class="stroke">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/"
+                >INICIO <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/mapa"
+                >MAPA<span class="sr-only"></span
+              ></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/metricas"
+                >MÉTRICA <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/graficos"
+                >GRÁFICOS <span class="sr-only">(current)</span></a
+              >
+            </li>
+          </ul>
+        </nav>
       </div>
     </nav>
   </head>
@@ -92,12 +96,16 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
+
+    <!--GRAFICOS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
   </body>
 </html>
 
 <div id="content">
   <!-- Para traer bloques de template -->
   {% block content %} 
+
   
   {% endblock %}
 </div>
