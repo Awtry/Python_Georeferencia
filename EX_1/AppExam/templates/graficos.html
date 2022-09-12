@@ -3,5 +3,48 @@
 {% block title %} tittle {% endblock %}
 
 {% block content %}
-<p>Aquí van los gráficos</p>
+
+
+<div class="card">
+    <div class="container">
+        <h4>Pago con tarjeta</h4> 
+        <p>El x% de las franquicias cuentan con este servicio</p> 
+    </div>
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
+</div>
+
+
+<script>
+    const labels = [
+      'Con tarjeta',
+      'Sin tarjeta',
+    ];
+  
+    const data = {
+      labels: labels,
+      datasets: [{
+        label: 'My First dataset',
+        backgroundColor: [
+        'rgb(110, 143, 121)',
+        'rgb(214, 157, 96)',
+        'rgb(181, 180, 123)',
+        ],
+        data: [10, 5],
+      }]
+    };
+  
+    const config = {
+      type: 'doughnut',
+      data: data,
+      options: {}
+    };
+
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+  </script>
+  
 {% endblock %}

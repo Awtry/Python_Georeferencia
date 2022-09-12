@@ -73,6 +73,8 @@ nav.stroke ul li a:hover:after {
 /*Carrusel */
 .carrusel {
     background-color: lightgray;
+    margin: 0;
+    padding-bottom: 0;
 }
 
 /*Ocultar botones de Carrusel*/
@@ -88,11 +90,12 @@ nav.stroke ul li a:hover:after {
 
 .bloqueFoto{
     background-color: lightgray;
-    margin-top: -70px;
+    padding: 0px 32px;
 }
 
 .fotos {
-    margin-bottom: 30px;
+    margin-top: 3%;
+    margin-bottom: 10px;
 }
 
 /* Termina sección del body*/
@@ -112,6 +115,25 @@ nav.stroke ul li a:hover:after {
 .separador > p > a {
     font-family: Santana;
     color: #E3E1DE;
+}
+
+.nav-link{
+    letter-spacing: 3px;
+    font-style: normal;
+    font-size: small;
+    margin-left: 1vh;
+    margin-right: 1vh;
+}
+
+.listCard{
+    margin-top: 2vh; 
+    padding: 2vh;
+    width: 100%;
+    margin-left: 0; 
+    width: 100%; 
+    justify-content: left; 
+    align-items: left; 
+    text-align: left;
 }
 
 /* Termina sección del footer */

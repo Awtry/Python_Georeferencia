@@ -30,8 +30,8 @@
     
 
     <!-- Barra de navegación -->
-    <nav class="navbar navbar-expand-lg navbar-background"  >
-      <img src="{% static 'images/SBPNG.PNG' %}" style="width: 6%; height: 6%; margin-right: 10px;" >
+    <nav class="navbar navbar-expand-lg navbar-background divShadow"  >
+      <img src="{% static 'images/SBPNG.PNG' %}" style="width: 6vh; height: 6vh; margin: 8px; margin-right: 12px;" >
       <button
         class="navbar-toggler"
         type="button"
@@ -49,22 +49,22 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
               <a class="nav-link" href="/"
-                >Inicio <span class="sr-only">(current)</span></a
+                >INICIO <span class="sr-only">(current)</span></a
               >
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="/mapa"
-                >Mapa<span class="sr-only"></span
+                >MAPA<span class="sr-only"></span
               ></a>
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="/metricas"
-                >Métrica <span class="sr-only">(current)</span></a
+                >MÉTRICA <span class="sr-only">(current)</span></a
               >
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link" href="/graficos"
-                >Gráficos <span class="sr-only">(current)</span></a
+                >GRÁFICOS <span class="sr-only">(current)</span></a
               >
             </li>
           </ul>
@@ -96,6 +96,9 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
+
+    <!--GRAFICOS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
   </body>
 </html>
 
