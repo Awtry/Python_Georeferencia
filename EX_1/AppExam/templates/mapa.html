@@ -13,11 +13,12 @@
 
 <!-- Mapa -->
 <form id="elemento" class="form">
-    <input id="coord"  value= "{{listaJson}}">
+    <input id="coordLAT"  value= "{{LAT}}">
+    <input id="coordLON"  value= "{{LON}}">
+    <input id="info"  value= "{{INFOR}}">
     <input type="button" name="enviar" value="Enviar" onload="GUARDAMELA();">
 </form>
 <div class="jumbotron" id="map" style="border-style: solid; border-color: green;"></div>
-<p>{{listaJson}}</p>
 
 <!-- Scrip para el manejo del map -->
 
@@ -28,53 +29,35 @@
 
      function GUARDAMELA(){
 
-        var laLista =  document.getElementById('coord').value;
-        var tam = laLista.length;
-        var Mia = JSON.parse(laLista);
+        var LATI =  document.getElementById('coordLAT').value;
+        var LONG =  document.getElementById('coordLON').value;
+        var Info = document.getElementById('info').value;
 
+        var tamlat = LATI.length;
+        var tamlon = LONG.length;
+        
+        var MiaLATI = JSON.parse(LATI);
+        var MiaLONG = JSON.parse(LONG);
+        var INFO = JSON.parse(Info);
 
-        console.log("El tamaño de la cosa: " + tam)
-        //console.log(laLista)
-        console.log(Mia)
-        //.log(laLista[0][1])
-
-
-        for (let i = 0; i < laLista.length; i++) {
-            
-           //L.marker([51.5, -0.09], {icon: starbucksIcon}).addTo(map).bindPopup("Hello perro.");
-            L.marker([Mia[i][0], Mia[i][1]], {icon: starbucksIcon}).addTo(map).bindPopup("Hello perro.");
-            console.log("Interno: " + i + " Dato: " + Mia[i]);
+        for (let i = 0; i < MiaLATI.length; i++) {
+            L.marker([MiaLATI[i], MiaLONG[i]], {icon: starbucksIcon}).addTo(map).bindPopup(INFO[i]);
         }
     }
 
-   // var listaCoordenadas = JSON.parse("{{listaJson|escapejs}}");
-
     coord = [21.172917917932295, -101.7349968862179]
 
-    var map = L.map('map').setView(coord, 13);
+    var map = L.map('map').setView(coord, 20);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
-
-    var LeafIcon = L.Icon.extend({
-        options: {
-            //shadowUrl: 'leaf-shadow.png',
-            iconSize:     [35, 35],
-            /*shadowSize:   [50, 64],
-            iconAnchor:   [22, 94],
-            shadowAnchor: [4, 62],
-            popupAnchor:  [-3, -76]*/
-        }
-    });
 
     L.icon = function(options){
         return new L.Icon(options);
     }
 
     var starbucksIcon = new LeafIcon({iconUrl: '../static/image/starbucks.png'})
-
-    
 
 </script>
 

@@ -1,15 +1,16 @@
 from cgitb import html
 from multiprocessing import context
+from traceback import print_list
 from urllib.robotparser import RequestRate
 from django.shortcuts import render, HttpResponse, redirect
 from django.template import loader
 from django.utils.html import escapejs
-import simplejson as json
 #import geopy  as geo
 #from geopy.geocoders import Nominatim
 import numpy as np
 import pandas as pd
 import csv, os
+import simplejson as json
 #import folium
 
 # VARIABLES GLOBALES
@@ -32,49 +33,31 @@ def graficos(request):
 # LÓGICA
 #Así se mandan datos de py a html
 def prueba(request):
-    #nombres = []
-    #with open('Personas.csv') as File:
-    #    reader = csv.reader(File, delimiter=';')
-    #    for x in reader: 
-    #        nombres.append(x)
-            
-    script_dir = os.path.dirname(__file__)
-    rel_path = r"C:\Users\jorge\Django\EX_1\AppExam\static\data\Personas.csv"
-    abs_file_path = os.path.join(script_dir, rel_path)
-    #current_file ="Personas.csv"
-    #file = open(abs_file_path+current_file,'r')
-    columns=['location']
-    datos = pd.read_csv(rel_path , sep=';')
-    newData = pd.DataFrame(datos, columns)
-    
+   
+   
 
-    #Experimental
-    #COLUMNS = ['age','workclass', 'fnlwgt', 'education', 'education_num', 'marital',
-    #       'occupation', 'relationship', 'race', 'sex', 'capital_gain', 'capital_loss',
-    #       'hours_week', 'native_country', 'label']
-    #PATH = "https://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.data"
-    #df_train = pd.read_csv(PATH,
-    #                   skipinitialspace=True,
-    #                   names = COLUMNS,
-    #                   index_col=False)
+
+
 
     template = loader.get_template('metricas.html')
-    context = { 'datos': newData,}
-    return HttpResponse(template.render(context, request))
+    #context = { 'datos': newData,}
+    return HttpResponse(request)
 
 def cargarMapa(request):
 
-    listaCoordenadas = [[51.5, -0.09],[25.42, 55.47],[24.4, 54.49],[24.48, 54.38]]
+    datos = pd.read_excel(r'C:/Users/jorge/Django/EX_1/AppExam/static/data/starbucks_in_california.xlsx')
 
-    listaJson = json.dumps(listaCoordenadas)
+    lat = datos['Latitude'] #Pos 9 
+    lon = datos['Longitude']#Pos 10
+    info = datos['name'].tolist()
 
+    LATITUD = lat.tolist()
+    LONGITUD = lon.tolist()
 
-
-    
-
-
-    print(listaJson)
+    LAT = json.dumps(LATITUD)
+    LON = json.dumps(LONGITUD)
+    INFOR = json.dumps(info)
 
     pagina = loader.get_template('mapa.html')
-    context = {'listaJson': listaJson}
+    context = {'LAT': LAT , 'LON': LON, 'INFOR': INFOR}
     return HttpResponse(pagina.render(context, request))
