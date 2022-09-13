@@ -5,10 +5,59 @@
 
 {% block content %}
 <!-- CSS LOCAL -->
-<link rel="stylesheet" type="text/css" href="{% static 'css/inicio.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/metricas.css' %}" />
+
++<!-- Contenedor Padre-->
+<div class="container">
+    <br>
+    <h1>Métricas:</h1>
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                <div class="card" id="cardServicio24">
+                    <div class="card-body">
+                        <h5 class="card-title">Servicio 24hrs</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Sucursales con servicio 24h</h6>
+                        <hr>
+                        <label class="cardContent"><b>Cuenta: </b>{{siservicioAbierto}}</label><br>
+                        <label class="cardContent"><b>No cuentan :</b> {{noservicioAbierto}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                <div class="card" id="cardServicio24">
+                    <div class="card-body">
+                        <h5 class="card-title">Servicio Clover Brewed</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Sucursales con servicio Clover® Brewed Coffees</h6>
+                        <hr>
+                        <label class="cardContent"><b>Cuenta: </b>{{siservicioClover}}</label><br>
+                        <label class="cardContent"><b>No cuenta :</b> {{noservicioClover}}</label>
+                    </div>
+                </div>
+            </div>
+        
+
+            
+
+            
 
 
-<p>Metricas</p>
-<p>Sucursales No servicio: {{noServicioHoras}}</p>
+            
+            
+        </div>
+    </div>
+
+    
+
+    
+
+</div>
+
+
+
+
 
 {% endblock %}

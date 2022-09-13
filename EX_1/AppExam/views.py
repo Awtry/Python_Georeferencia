@@ -39,22 +39,26 @@ def listastarbucks(request):
     df = pd.read_csv('C:/AnacondaPython/Python_Georeferencia/EX_1/AppExam/static/data/starbucks.csv')
 
     servicioAbierto = df['24_hour_service']
-    #siServicioHoras = 0
+    siServicioHoras = 0
     noServicioHoras = 0
 
     for i in servicioAbierto:
         if i != "false": 
-            noServicioHoras = noServicioHoras+1 
+            noServicioHoras = noServicioHoras+1
+    
+    servicioClover = df['starbucks_reserve_clover_brewed'].to_list()
+    siservicioClover = servicioClover.count('true')
+    noservicioClover = 0
     
 
     template = loader.get_template('metricas.html')
-    context = {'noServicioHoras':noServicioHoras}
+    context = {'noServicioHoras':noServicioHoras, 'siServicioHoras':siServicioHoras, 'siservicioClover':siservicioClover,'noservicioClover':noservicioClover}
 
     return HttpResponse(template.render(context, request))
 
 def cargarMapa(request):
 
-    datos = pd.read_excel(r'C:\Users\jorge\Django\EX_1\AppExam\static\data\starbucks_in_california.xlsx')
+    datos = pd.read_excel(r'C:/AnacondaPython/Python_Georeferencia/EX_1/AppExam/static/data/starbucks_in_california.xlsx')
 
     lat = datos['Latitude'] #Pos 9 
     lon = datos['Longitude']#Pos 10
