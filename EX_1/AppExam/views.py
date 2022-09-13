@@ -5,6 +5,7 @@ from django.template import loader
 import pandas as pd
 import numpy as np
 import simplejson as json
+import collections
 #import folium
 
 # VARIABLES GLOBALES
@@ -35,7 +36,7 @@ def prueba(request):
 def listastarbucks(request):
 
     #NO OLVIDAR CAMBIAR LA RUTA DE MANERA INDIVIDUAL en cada uno de sus
-    # equipos, para LA LECTURA DEL ARCHIVO DE STARBUCKS
+    # equipos, para LA LECTURA DEL ARCHIVO DE STARBUCKS.csv
     df = pd.read_csv('C:/AnacondaPython/Python_Georeferencia/EX_1/AppExam/static/data/starbucks.csv')
 
     servicioAbierto = df['24_hour_service']
@@ -43,13 +44,22 @@ def listastarbucks(request):
     noServicioHoras = 0
 
     for i in servicioAbierto:
-        if i != "false": 
+        if i == 1:
+            siServicioHoras = siServicioHoras+1
+        elif i == 0:
             noServicioHoras = noServicioHoras+1
+   
     
-    servicioClover = df['starbucks_reserve_clover_brewed'].to_list()
-    siservicioClover = servicioClover.count('true')
+    servicioClover = df['starbucks_reserve_clover_brewed']
+    siservicioClover = 0
     noservicioClover = 0
-    
+    for i in servicioClover:
+        if i == 1:
+            siservicioClover = siservicioClover+1
+        elif i == 0:
+            noservicioClover = noservicioClover+1
+
+
 
     template = loader.get_template('metricas.html')
     context = {'noServicioHoras':noServicioHoras, 'siServicioHoras':siServicioHoras, 'siservicioClover':siservicioClover,'noservicioClover':noservicioClover}
@@ -58,6 +68,8 @@ def listastarbucks(request):
 
 def cargarMapa(request):
 
+     #NO OLVIDAR CAMBIAR LA RUTA DE MANERA INDIVIDUAL en cada uno de sus
+    # equipos, para LA LECTURA DEL ARCHIVO DE STARBUCKS_IN_CALIFORNIA.xlsx
     datos = pd.read_excel(r'C:/AnacondaPython/Python_Georeferencia/EX_1/AppExam/static/data/starbucks_in_california.xlsx')
 
     lat = datos['Latitude'] #Pos 9 
