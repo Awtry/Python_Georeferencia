@@ -6,6 +6,7 @@ import pandas as pd
 import numpy as np
 import simplejson as json
 import collections
+import os
 #import folium
 
 # VARIABLES GLOBALES
@@ -37,7 +38,7 @@ def listastarbucks(request):
 
     #NO OLVIDAR CAMBIAR LA RUTA DE MANERA INDIVIDUAL en cada uno de sus
     # equipos, para LA LECTURA DEL ARCHIVO DE STARBUCKS.csv
-    df = pd.read_csv('C:/AnacondaPython/Python_Georeferencia/EX_1/AppExam/static/data/starbucks.csv')
+    df = pd.read_csv(f'{os.path.dirname(os.path.abspath(__file__))}/static/data/starbucks.csv')
 
     servicioAbierto = df['24_hour_service']
     siServicioHoras = 0
@@ -70,7 +71,7 @@ def cargarMapa(request):
 
      #NO OLVIDAR CAMBIAR LA RUTA DE MANERA INDIVIDUAL en cada uno de sus
     # equipos, para LA LECTURA DEL ARCHIVO DE STARBUCKS_IN_CALIFORNIA.xlsx
-    datos = pd.read_excel(r'C:/AnacondaPython/Python_Georeferencia/EX_1/AppExam/static/data/starbucks_in_california.xlsx')
+    datos = pd.read_excel(f'{os.path.dirname(os.path.abspath(__file__))}/static/data/starbucks_in_california.xlsx')
 
     lat = datos['Latitude'] #Pos 9 
     lon = datos['Longitude']#Pos 10
