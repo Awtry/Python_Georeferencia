@@ -24,7 +24,7 @@ def metricas(request):
     return redirect('/listastarbucks')
 
 def graficos(request):
-    return render(request, 'graficos.html')
+    return redirect('/listastarbucksgraf')
 
 # LÓGICA
 #Así se mandan datos de py a html
@@ -35,7 +35,6 @@ def prueba(request):
     return HttpResponse(template.render(context, request))
 
 def listastarbucks(request):
-
     #NO OLVIDAR CAMBIAR LA RUTA DE MANERA INDIVIDUAL en cada uno de sus
     # equipos, para LA LECTURA DEL ARCHIVO DE STARBUCKS.csv
     df = pd.read_csv(f'{os.path.dirname(os.path.abspath(__file__))}/static/data/starbucks.csv')
@@ -66,6 +65,37 @@ def listastarbucks(request):
     context = {'noServicioHoras':noServicioHoras, 'siServicioHoras':siServicioHoras, 'siservicioClover':siservicioClover,'noservicioClover':noservicioClover}
 
     return HttpResponse(template.render(context, request))
+
+def listastarbucksgraf(request):
+    #NO OLVIDAR CAMBIAR LA RUTA DE MANERA INDIVIDUAL en cada uno de sus
+    # equipos, para LA LECTURA DEL ARCHIVO DE STARBUCKS.csv
+    df = pd.read_csv(f'{os.path.dirname(os.path.abspath(__file__))}/static/data/starbucks.csv')
+
+    servicioAbierto = df['24_hour_service']
+    siServicioHoras = 0
+    noServicioHoras = 0
+
+    for i in servicioAbierto:
+        if i == 1:
+            siServicioHoras = siServicioHoras+1
+        elif i == 0:
+            noServicioHoras = noServicioHoras+1
+   
+    
+    servicioClover = df['starbucks_reserve_clover_brewed']
+    siservicioClover = 0
+    noservicioClover = 0
+    for i in servicioClover:
+        if i == 1:
+            siservicioClover = siservicioClover+1
+        elif i == 0:
+            noservicioClover = noservicioClover+1
+
+    template = loader.get_template('graficos.html')
+    context = {'noServicioHoras':noServicioHoras, 'siServicioHoras':siServicioHoras, 'siservicioClover':siservicioClover,'noservicioClover':noservicioClover}
+
+    return HttpResponse(template.render(context, request))
+
 
 def cargarMapa(request):
 

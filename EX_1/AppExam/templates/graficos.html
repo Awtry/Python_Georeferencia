@@ -1,25 +1,56 @@
 {% extends 'layout.html' %} 
+{% load static %} 
 
 {% block title %} Graficos {% endblock %}
 
 {% block content %}
+<div id="datos" style="width: 0; height: 0; opacity: 0;">
+  <label id="m1" >{{siServicioHoras}}</label>
+  <label id="m2">{{noServicioHoras}}</label>
+  <label id="m3" >{{siservicioClover}}</label>
+  <label id="m4">{{noservicioClover}}</label>
+</div>
 
-
-<div class="card">
+<div class="card" style="float: left;">
     <div class="container">
-        <h4>Pago con tarjeta</h4> 
-        <p>El x% de las franquicias cuentan con este servicio</p> 
+      
+        <h4>Servicio 24/7</h4> 
+        <p id="gservicio"></p> 
     </div>
     <div>
         <canvas id="myChart"></canvas>
     </div>
 </div>
 
+<div class="card" style="float: left;">
+  <div class="container">
+    
+      <h4>Servicio clover brewed</h4> 
+      <p id="gservicio2"></p> 
+  </div>
+  <div>
+      <canvas id="myChart2"></canvas>
+  </div>
+</div>
+
+
 
 <script>
+  var m1 = parseInt(document.getElementById("m1").textContent);
+  var m2 = parseInt(document.getElementById("m2").textContent);
+  var m3 = parseInt(document.getElementById("m3").textContent);
+  var m4 = parseInt(document.getElementById("m4").textContent);
+
+  porcentaje = "El "+Math.round(m1*100/(m1+m2)).toFixed(2)+"% de los Starbucks cuentan con este servicio";
+  porcentaje2 = "El "+Math.round(m3*100/(m3+m4)).toFixed(2)+"% de los Starbucks cuentan con este servicio";
+
+  document.getElementById("gservicio").textContent = porcentaje;
+  document.getElementById("gservicio2").textContent = porcentaje2;
+
+  
     const labels = [
-      'Con tarjeta',
-      'Sin tarjeta',
+      'Con servicio',
+      'Sin servicio',
     ];
   
     const data = {
@@ -31,13 +62,32 @@
         'rgb(214, 157, 96)',
         'rgb(181, 180, 123)',
         ],
-        data: [10, 5],
+        data: [m1, m2],
       }]
     };
   
+    const data2 = {
+      labels: labels,
+      datasets: [{
+        label: 'My First dataset2',
+        backgroundColor: [
+        'rgb(110, 143, 121)',
+        'rgb(214, 157, 96)',
+        'rgb(181, 180, 123)',
+        ],
+        data: [m3, m4],
+      }]
+    };
+
     const config = {
       type: 'doughnut',
       data: data,
+      options: {}
+    };
+
+    const config2 = {
+      type: 'doughnut',
+      data: data2,
       options: {}
     };
 
@@ -45,6 +95,13 @@
         document.getElementById('myChart'),
         config
     );
+
+    const myChart2 = new Chart(
+        document.getElementById('myChart2'),
+        config2
+    );
+
+    
   </script>
   
 {% endblock %}
