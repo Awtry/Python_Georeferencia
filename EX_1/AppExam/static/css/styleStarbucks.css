@@ -25,6 +25,7 @@ p {
   justify-content: center;
   align-items: center;
   padding: 2vh;
+  float: left;
 }
 
 .card:hover {
@@ -43,3 +44,9 @@ p {
     border: 1px solid;
     box-shadow: 5px 10px 8px #888888;
   }
+
+.hidden {
+  height: 0;
+  width: 0;
+  opacity: 0;
+}

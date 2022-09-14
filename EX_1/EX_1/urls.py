@@ -26,6 +26,7 @@ urlpatterns = [
     path('graficos/', views.graficos, name='graficos'),
     path('prueba/', views.prueba, name='prueba'),
     path('listastarbucks/', views.listastarbucks, name='listastarbucks'),
+    path('listastarbucksgraf/', views.listastarbucksgraf, name='listastarbucksgraf'),
     path('cargarMapa/', views.cargarMapa, name='cargarMapa'),
     
     
