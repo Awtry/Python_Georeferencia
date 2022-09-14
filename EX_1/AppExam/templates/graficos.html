@@ -4,104 +4,154 @@
 {% block title %} Graficos {% endblock %}
 
 {% block content %}
-<div id="datos" style="width: 0; height: 0; opacity: 0;">
-  <label id="m1" >{{siServicioHoras}}</label>
-  <label id="m2">{{noServicioHoras}}</label>
-  <label id="m3" >{{siservicioClover}}</label>
-  <label id="m4">{{noservicioClover}}</label>
-</div>
+<!--Método para crear chart, recibe id del label del porcentaje, nombre de chart, cantidad de si, cantidad de no e id del elemento que contiene el gráfico-->
+<script>
+  const labels = [
+      'Con servicio',
+      'Sin servicio',
+    ];
+
+  function setChart(label,chartName,yes,no,element) {
+    por = "El "+Math.round(yes*100/(yes+no)).toFixed(2)+"% de los Starbucks cuentan con este servicio";
+    document.getElementById(label).textContent = por;
+      var y = {
+      labels: labels,
+      datasets: [{
+        label: chartName,
+        backgroundColor: [
+        'rgb(110, 143, 121)',
+        'rgb(214, 157, 96)',
+        'rgb(181, 180, 123)',
+        ],
+        data: [yes,no],
+      }]
+    };
+
+      const config = {
+        type: 'doughnut',
+        data: y,
+        options: {}
+      };
+
+      const myChart = new Chart(
+          document.getElementById(element),
+          config
+      );
+    };
+
+</script>
 
 <div class="card" style="float: left;">
     <div class="container">
-      
         <h4>Servicio 24/7</h4> 
-        <p id="gservicio"></p> 
+        <p id="p1"></p> 
     </div>
     <div>
-        <canvas id="myChart"></canvas>
+        <canvas id="myChart1"></canvas>
     </div>
 </div>
 
-<div class="card" style="float: left;">
+<div class="card" style="float: left;" >
   <div class="container">
-    
       <h4>Servicio clover brewed</h4> 
-      <p id="gservicio2"></p> 
+      <p id="p2"></p> 
   </div>
   <div>
       <canvas id="myChart2"></canvas>
   </div>
 </div>
 
+<div class="card" style="float: left;" >
+  <div class="container">
+      <h4>Servicio Food</h4> 
+      <p id="p3"></p> 
+  </div>
+  <div>
+      <canvas id="myChart3"></canvas>
+  </div>
+</div>
 
+<div class="card" style="float: left;" >
+  <div class="container">
+      <h4>Servicio Wifi</h4> 
+      <p id="p4"></p> 
+  </div>
+  <div>
+      <canvas id="myChart4"></canvas>
+  </div>
+</div>
+
+<div class="card" style="float: left;" >
+  <div class="container">
+      <h4>Servicio Verismo</h4> 
+      <p id="p5"></p> 
+  </div>
+  <div>
+      <canvas id="myChart5"></canvas>
+  </div>
+</div>
+
+<div class="card" style="float: left;" >
+  <div class="container">
+      <h4>Servicio pago con móvil </h4> 
+      <p id="p6"></p> 
+  </div>
+  <div>
+      <canvas id="myChart6"></canvas>
+  </div>
+</div>
+
+<div class="card" style="float: left;" >
+  <div class="container">
+      <h4>Servicio DigitalReds </h4> 
+      <p id="p7"></p> 
+  </div>
+  <div>
+      <canvas id="myChart7"></canvas>
+  </div>
+</div>
+
+<div class="card" style="float: left;" >
+  <div class="container">
+      <h4>Servicio Boulange</h4> 
+      <p id="p8"></p> 
+  </div>
+  <div>
+      <canvas id="myChart8"></canvas>
+  </div>
+</div>
+
+<div class="card" style="float: left;" >
+  <div class="container">
+      <h4>Servicio Sodas </h4> 
+      <p id="p9"></p> 
+  </div>
+  <div>
+      <canvas id="myChart9"></canvas>
+  </div>
+</div>
+
+<div class="card" style="float: left;" >
+  <div class="container">
+      <h4>Servicio DriveThru </h4> 
+      <p id="p10"></p> 
+  </div>
+  <div>
+      <canvas id="myChart10"></canvas>
+  </div>
+</div>
 
 <script>
-  var m1 = parseInt(document.getElementById("m1").textContent);
-  var m2 = parseInt(document.getElementById("m2").textContent);
-  var m3 = parseInt(document.getElementById("m3").textContent);
-  var m4 = parseInt(document.getElementById("m4").textContent);
-
-  porcentaje = "El "+Math.round(m1*100/(m1+m2)).toFixed(2)+"% de los Starbucks cuentan con este servicio";
-  porcentaje2 = "El "+Math.round(m3*100/(m3+m4)).toFixed(2)+"% de los Starbucks cuentan con este servicio";
-
-  document.getElementById("gservicio").textContent = porcentaje;
-  document.getElementById("gservicio2").textContent = porcentaje2;
-
-  
-    const labels = [
-      'Con servicio',
-      'Sin servicio',
-    ];
-  
-    const data = {
-      labels: labels,
-      datasets: [{
-        label: 'My First dataset',
-        backgroundColor: [
-        'rgb(110, 143, 121)',
-        'rgb(214, 157, 96)',
-        'rgb(181, 180, 123)',
-        ],
-        data: [m1, m2],
-      }]
-    };
-  
-    const data2 = {
-      labels: labels,
-      datasets: [{
-        label: 'My First dataset2',
-        backgroundColor: [
-        'rgb(110, 143, 121)',
-        'rgb(214, 157, 96)',
-        'rgb(181, 180, 123)',
-        ],
-        data: [m3, m4],
-      }]
-    };
-
-    const config = {
-      type: 'doughnut',
-      data: data,
-      options: {}
-    };
-
-    const config2 = {
-      type: 'doughnut',
-      data: data2,
-      options: {}
-    };
-
-    const myChart = new Chart(
-        document.getElementById('myChart'),
-        config
-    );
-
-    const myChart2 = new Chart(
-        document.getElementById('myChart2'),
-        config2
-    );
-
-    
-  </script>
+  data1 = setChart('p1','Horas',{{siHoras}},{{noHoras}},'myChart1'); 
+  data2 = setChart('p2','Clover',{{siClover}},{{noClover}},'myChart2');   
+  data3 = setChart('p3','Food',{{siFood}},{{noFood}},'myChart3'); 
+  data4 = setChart('p4','Wifi',{{siWifi}},{{noWifi}},'myChart4'); 
+  data5 = setChart('p5','Verismo',{{siVerismo}},{{noVerismo}},'myChart5'); 
+  data6 = setChart('p6','MobilePay',{{siMobilePay}},{{noMobilePay}},'myChart6'); 
+  data7 = setChart('p7','DigitalReds',{{siDigitalReds}},{{noDigitalReds}},'myChart7'); 
+  data8 = setChart('p8','Boulange',{{siBoulange}},{{noBoulange}},'myChart8'); 
+  data9 = setChart('p9','Sodas',{{siSodas}},{{noSodas}},'myChart9'); 
+  data10 = setChart('p10','DriveThru',{{siDriveThru}},{{noDriveThru}},'myChart10');
+</script>
   
 {% endblock %}

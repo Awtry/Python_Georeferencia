@@ -178,32 +178,122 @@ def listastarbucks(request):
     return HttpResponse(template.render(context, request))
 
 def listastarbucksgraf(request):
-    #NO OLVIDAR CAMBIAR LA RUTA DE MANERA INDIVIDUAL en cada uno de sus
+        #NO OLVIDAR CAMBIAR LA RUTA DE MANERA INDIVIDUAL en cada uno de sus
     # equipos, para LA LECTURA DEL ARCHIVO DE STARBUCKS.csv
     df = pd.read_csv(f'{os.path.dirname(os.path.abspath(__file__))}/static/data/starbucks.csv')
 
     servicioAbierto = df['24_hour_service']
-    siServicioHoras = 0
-    noServicioHoras = 0
-
+    siHoras = 0
+    noHoras = 0
     for i in servicioAbierto:
         if i == 1:
-            siServicioHoras = siServicioHoras+1
+            siHoras = siHoras+1
         elif i == 0:
-            noServicioHoras = noServicioHoras+1
+            noHoras = noHoras+1
    
-    
     servicioClover = df['starbucks_reserve_clover_brewed']
-    siservicioClover = 0
-    noservicioClover = 0
+    siClover = 0
+    noClover = 0
     for i in servicioClover:
         if i == 1:
-            siservicioClover = siservicioClover+1
+            siClover = siClover+1
         elif i == 0:
-            noservicioClover = noservicioClover+1
+            noClover = noClover+1
+
+    servicioFood = df['oven_warmed_food']
+    siFood = 0
+    noFood = 0
+    for i in servicioFood:
+        if i == 1:
+            siFood = siFood+1
+        elif i == 0:
+            noFood = noFood+1
+
+    servicioWiFi = df['free_wi_fi']
+    siWifi = 0
+    noWifi = 0
+    for i in servicioWiFi:
+        if i == 1:
+            siWifi = siWifi+1
+        elif i == 0:
+            noWifi = noWifi+1
+
+    servicioVerismo= df['verismo_system']
+    siVerismo = 0
+    noVerismo = 0
+    for i in servicioVerismo:
+        if i == 1:
+            siVerismo = siVerismo+1
+        elif i == 0:
+            noVerismo = noVerismo+1
+
+    servicioMobilePay= df['mobile_payment']
+    siMobilePay = 0
+    noMobilePay = 0
+    for i in servicioMobilePay:
+        if i == 1:
+            siMobilePay = siMobilePay+1
+        elif i == 0:
+            noMobilePay = noMobilePay+1
+
+    servicioDigitalReds= df['digital_rewards']
+    siDigitalReds = 0
+    noDigitalReds = 0
+    for i in servicioDigitalReds:
+        if i == 1:
+            siDigitalReds = siDigitalReds+1
+        elif i == 0:
+            noDigitalReds = noDigitalReds+1
+
+    servicioBoulange= df['la_boulange']
+    siBoulange = 0
+    noBoulange = 0
+    for i in servicioBoulange:
+        if i == 1:
+            siBoulange = siBoulange+1
+        elif i == 0:
+            noBoulange = noBoulange+1
+            
+    servicioSodas= df['fizzio_handcrafted_sodas']
+    siSodas = 0
+    noSodas = 0
+    for i in servicioSodas:
+        if i == 1:
+            siSodas = siSodas+1
+        elif i == 0:
+            noSodas = noSodas+1
+
+    servicioDriveThru= df['drive_thru']
+    siDriveThru = 0
+    noDriveThru = 0
+    for i in servicioDriveThru:
+        if i == 1:
+            siDriveThru = siDriveThru+1
+        elif i == 0:
+            noDriveThru = noDriveThru+1
 
     template = loader.get_template('graficos.html')
-    context = {'noServicioHoras':noServicioHoras, 'siServicioHoras':siServicioHoras, 'siservicioClover':siservicioClover,'noservicioClover':noservicioClover}
+    context = {
+        'siHoras':siHoras, 
+        'noHoras':noHoras,
+        'siClover':siClover,
+        'noClover':noClover,
+        'siFood':siFood, 
+        'noFood': noFood,
+        'siWifi':siWifi, 
+        'noWifi':noWifi ,
+        'siVerismo': siVerismo,
+        'noVerismo': noVerismo,
+        'siMobilePay': siMobilePay,
+        'noMobilePay': noMobilePay,
+        'siDigitalReds': siDigitalReds,
+        'noDigitalReds': noDigitalReds,
+        'siBoulange': siBoulange,
+        'noBoulange': noBoulange,
+        'siSodas': siSodas,
+        'noSodas': noSodas,
+        'siDriveThru': siDriveThru,
+        'noDriveThru': noDriveThru  }
 
     return HttpResponse(template.render(context, request))
 
