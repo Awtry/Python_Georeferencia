@@ -5,9 +5,9 @@
 
 {% block content %}
 <!-- CSS LOCAL -->
-<link rel="stylesheet" type="text/css" href="{% static 'css/metricas.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/metricas.css' %}"/>
 
-+<!-- Contenedor Padre-->
+<!-- Contenedor Padre-->
 <div class="container">
     <br>
     <h1>Métricas:</h1>
@@ -15,123 +15,222 @@
     <div class="container-fluid">
         <div class="row">
 
-            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                <div class="card" id="cardServicio24">
-                    <div class="card-body">
-                        <h5 class="card-title">Servicio 24hrs</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Sucursales con servicio 24h</h6>
-                        <hr>
-                        <label class="cardContent"><b>Cuenta: </b>{{siHoras}}</label><br>
-                        <label class="cardContent"><b>No cuentan :</b> {{noHoras}}</label>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 columnaPadre">
+                <div class="contenedor">
+
+                    <div class="row">
+                        <div class="col-4 contenedorCol1">
+                            <img class="image" src="https://c8.alamy.com/compes/dpb90x/starbucks-coffee-24-horas-dpb90x.jpg" alt="">
+                        </div>
+
+                        <div class="col-8 contenedorCol2">
+                            <h5 class="card-title">Servicio 24hrs</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Sucursales con servicio 24h</h6>
+                            <hr>
+                            <label class="cardContent"><b>Cuenta: </b>{{siHoras}}</label><br>
+                            <label class="cardContent"><b>No cuentan :</b> {{noHoras}}</label>
+                        </div>
+
                     </div>
                 </div>
             </div>
 
-            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                <div class="card" id="cardServicio24">
-                    <div class="card-body">
-                        <h5 class="card-title">Servicio Clover Brewed</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Sucursales con servicio Clover® Brewed Coffees</h6>
-                        <hr>
-                        <label class="cardContent"><b>Cuenta: </b>{{siClover}}</label><br>
-                        <label class="cardContent"><b>No cuenta :</b> {{noClover}}</label>
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 columnaPadre">
+                <div class="contenedor">
+
+                    <div class="row">
+                        <div class="col-4 contenedorCol1">
+                            <img class="image" src="https://c8.alamy.com/compes/dpb90x/starbucks-coffee-24-horas-dpb90x.jpg" alt="">
+                        </div>
+
+                        <div class="col-8 contenedorCol2">
+                            <h5 class="card-title">Servicio Clover Brewed</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Sucursales con servicio Clover® Brewed Coffees</h6>
+                            <hr>
+                            <label class="cardContent"><b>Cuenta: </b>{{siClover}}</label><br>
+                            <label class="cardContent"><b>No cuenta :</b> {{noClover}}</label>
+                        </div>
+
                     </div>
                 </div>
+
+
             </div>
 
-            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                <div class="card" id="cardServicio24">
-                    <div class="card-body">
-                        <h5 class="card-title">Servicio Food</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Sucursales con servicio Oven warmed Food</h6>
-                        <hr>
-                        <label class="cardContent"><b>Cuenta: </b>{{siFood}}</label><br>
-                        <label class="cardContent"><b>No cuenta :</b> {{noFood}}</label>
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 columnaPadre">
+
+                <div class="contenedor">
+
+                    <div class="row">
+                        <div class="col-4 contenedorCol1">
+                            <img class="image" src="https://c8.alamy.com/compes/dpb90x/starbucks-coffee-24-horas-dpb90x.jpg" alt="">
+                        </div>
+
+                        <div class="col-8 contenedorCol2">
+                            <h5 class="card-title">Servicio Food</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Sucursales con servicio Oven warmed Food</h6>
+                            <hr>
+                            <label class="cardContent"><b>Cuenta: </b>{{siFood}}</label><br>
+                            <label class="cardContent"><b>No cuenta :</b> {{noFood}}</label>
+                        </div>
+
                     </div>
                 </div>
+
+
             </div>
 
-            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                <div class="card" id="cardServicio24">
-                    <div class="card-body">
-                        <h5 class="card-title">Servicio Wifi</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Sucursales con servicio gratuito de Wifi</h6>
-                        <hr>
-                        <label class="cardContent"><b>Cuenta: </b>{{siWifi}}</label><br>
-                        <label class="cardContent"><b>No cuenta :</b> {{noWifi}}</label>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 columnaPadre">
+                <div class="contenedor">
+
+                    <div class="row">
+                        <div class="col-4 contenedorCol1">
+                            <img class="image" src="https://c8.alamy.com/compes/dpb90x/starbucks-coffee-24-horas-dpb90x.jpg" alt="">
+                        </div>
+
+                        <div class="col-8 contenedorCol2">
+                            <h5 class="card-title">Servicio Wifi</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Sucursales con servicio gratuito de Wifi</h6>
+                            <hr>
+                            <label class="cardContent"><b>Cuenta: </b>{{siWifi}}</label><br>
+                            <label class="cardContent"><b>No cuenta :</b> {{noWifi}}</label>
+                        </div>
+
                     </div>
                 </div>
+
             </div>
             
-            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                <div class="card" id="cardServicio24">
-                    <div class="card-body">
-                        <h5 class="card-title">Servicio Verismo</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Sucursales con servicio de Verismo System</h6>
-                        <hr>
-                        <label class="cardContent"><b>Cuenta: </b>{{siVerismo}}</label><br>
-                        <label class="cardContent"><b>No cuenta :</b> {{noVerismo}}</label>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 columnaPadre">                
+                <div class="contenedor">
+
+                    <div class="row">
+                        <div class="col-4 contenedorCol1">
+                            <img class="image" src="https://c8.alamy.com/compes/dpb90x/starbucks-coffee-24-horas-dpb90x.jpg" alt="">
+                        </div>
+
+                        <div class="col-8 contenedorCol2">
+                            <h5 class="card-title">Servicio Verismo</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Sucursales con servicio de Verismo System</h6>
+                            <hr>
+                            <label class="cardContent"><b>Cuenta: </b>{{siVerismo}}</label><br>
+                            <label class="cardContent"><b>No cuenta :</b> {{noVerismo}}</label>
+                        </div>
+
                     </div>
                 </div>
+
             </div>
 
-            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                <div class="card" id="cardServicio24">
-                    <div class="card-body">
-                        <h5 class="card-title">Servicio Mobile Payment</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Sucursales con servicio Paga con Celular</h6>
-                        <hr>
-                        <label class="cardContent"><b>Cuenta: </b>{{siMobilePay}}</label><br>
-                        <label class="cardContent"><b>No cuenta :</b> {{noMobilePay}}</label>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 columnaPadre">
+                <div class="contenedor">
+
+                    <div class="row">
+                        <div class="col-4 contenedorCol1">
+                            <img class="image" src="https://c8.alamy.com/compes/dpb90x/starbucks-coffee-24-horas-dpb90x.jpg" alt="">
+                        </div>
+
+                        <div class="col-8 contenedorCol2">
+                            <h5 class="card-title">Servicio Mobile Payment</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Sucursales con servicio Paga con Celular</h6>
+                            <hr>
+                            <label class="cardContent"><b>Cuenta: </b>{{siMobilePay}}</label><br>
+                            <label class="cardContent"><b>No cuenta :</b> {{noMobilePay}}</label>
+                        </div>
+
                     </div>
                 </div>
+
             </div>
             
-            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                <div class="card" id="cardServicio24">
-                    <div class="card-body">
-                        <h5 class="card-title">Servicio Digital Rewards</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Sucursales con servicio Digital Rewards por compra</h6>
-                        <hr>
-                        <label class="cardContent"><b>Cuenta: </b>{{siDigitalReds}}</label><br>
-                        <label class="cardContent"><b>No cuenta :</b> {{noDigitalReds}}</label>
+
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 columnaPadre">
+                <div class="contenedor">
+
+                    <div class="row">
+                        <div class="col-4 contenedorCol1">
+                            <img class="image" src="https://c8.alamy.com/compes/dpb90x/starbucks-coffee-24-horas-dpb90x.jpg" alt="">
+                        </div>
+
+                        <div class="col-8 contenedorCol2">
+                            <h5 class="card-title">Servicio Digital Rewards</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Sucursales con servicio Digital Rewards por compra</h6>
+                            <hr>
+                            <label class="cardContent"><b>Cuenta: </b>{{siDigitalReds}}</label><br>
+                            <label class="cardContent"><b>No cuenta :</b> {{noDigitalReds}}</label>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 columnaPadre">
+                <div class="contenedor">
+
+                    <div class="row">
+                        <div class="col-4 contenedorCol1">
+                            <img class="image" src="https://c8.alamy.com/compes/dpb90x/starbucks-coffee-24-horas-dpb90x.jpg" alt="">
+                        </div>
+
+                        <div class="col-8 contenedorCol2">
+                            <h5 class="card-title">Servicio Boulange</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Sucursales con servicio Boulange</h6>
+                            <hr>
+                            <label class="cardContent"><b>Cuenta: </b>{{siBoulange}}</label><br>
+                            <label class="cardContent"><b>No cuenta :</b> {{noBoulange}}</label>
+                        </div>
+
                     </div>
                 </div>
             </div>
 
-            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                <div class="card" id="cardServicio24">
-                    <div class="card-body">
-                        <h5 class="card-title">Servicio Boulange</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Sucursales con servicio Boulange</h6>
-                        <hr>
-                        <label class="cardContent"><b>Cuenta: </b>{{siBoulange}}</label><br>
-                        <label class="cardContent"><b>No cuenta :</b> {{noBoulange}}</label>
+            
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 columnaPadre">
+
+                <div class="contenedor">
+
+                    <div class="row">
+                        <div class="col-4 contenedorCol1">
+                            <img class="image" src="https://c8.alamy.com/compes/dpb90x/starbucks-coffee-24-horas-dpb90x.jpg" alt="">
+                        </div>
+    
+                        <div class="col-8 contenedorCol2">
+                            <h5 class="card-title">Servicio Handcrafted Sodas</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Sucursales con servicio StarSodas</h6>
+                            <hr>
+                            <label class="cardContent"><b>Cuenta: </b>{{siSodas}}</label><br>
+                            <label class="cardContent"><b>No cuenta :</b> {{noSodas}}</label>
+                        </div>
+    
                     </div>
+
                 </div>
             </div>
 
-            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                <div class="card" id="cardServicio24">
-                    <div class="card-body">
-                        <h5 class="card-title">Servicio Handcrafted Sodas</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Sucursales con servicio StarSodas</h6>
-                        <hr>
-                        <label class="cardContent"><b>Cuenta: </b>{{siSodas}}</label><br>
-                        <label class="cardContent"><b>No cuenta :</b> {{noSodas}}</label>
-                    </div>
-                </div>
-            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 columnaPadre">
+                <div class="contenedor">
 
-            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                <div class="card" id="cardServicio24">
-                    <div class="card-body">
-                        <h5 class="card-title">Servicio Drive Thru</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Sucursales con Auto Servicio</h6>
-                        <hr>
-                        <label class="cardContent"><b>Cuenta: </b>{{siDriveThru}}</label><br>
-                        <label class="cardContent"><b>No cuenta :</b> {{noDriveThru}}</label>
+                    <div class="row">
+                        <div class="col-4 contenedorCol1">
+                            <img class="image" src="https://c8.alamy.com/compes/dpb90x/starbucks-coffee-24-horas-dpb90x.jpg" alt="">
+                        </div>
+    
+                        <div class="col-8 contenedorCol2">
+                            <h5 class="card-title">Servicio Drive Thru</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Sucursales con Auto Servicio</h6>
+                            <hr>
+                            <label class="cardContent"><b>Cuenta: </b>{{siDriveThru}}</label><br>
+                            <label class="cardContent"><b>No cuenta :</b> {{noDriveThru}}</label>
+                        </div>
                     </div>
+
                 </div>
             </div>
 
