@@ -1,0 +1,70 @@
+{% extends 'layout.html' %} 
+
+{% block title %} tittle {% endblock %}
+
+{% block content %}
+<!-- Estilo del mapa -->
+<style>
+    #map {
+        width: 100%;
+        height: 100vh;
+    }
+</style>
+
+<!-- Mapa -->
+<form id="elemento" class="form">
+    <input id="coordLAT"  value= "{{LAT}}" type="hidden">
+    <input id="coordLON"  value= "{{LON}}" type="hidden">
+    <input id="info"  value= "{{INFOR}}" type="hidden">
+ <!--    <input type="button" name="enviar" value="Enviar" onload="GUARDAMELA();"> -->
+</form>
+<div class="jumbotron" id="map"></div>
+
+<!-- Scrip para el manejo del map -->
+
+<script>
+    window.onload = function(){
+        GUARDAMELA();
+    };
+
+     function GUARDAMELA(){
+
+        var LATI =  document.getElementById('coordLAT').value;
+        var LONG =  document.getElementById('coordLON').value;
+        var Info = document.getElementById('info').value;
+
+        var tamlat = LATI.length;
+        var tamlon = LONG.length;
+        
+        var MiaLATI = JSON.parse(LATI);
+        var MiaLONG = JSON.parse(LONG);
+        var INFO = JSON.parse(Info);
+
+        for (let i = 0; i < MiaLATI.length; i++) {
+            L.marker([MiaLATI[i], MiaLONG[i]], {icon: starbucksIcon}).addTo(map).bindPopup(INFO[i]);
+        }
+    }
+
+    coord = [36.22554926857518, -119.67373197692386]
+
+    var map = L.map('map').setView(coord, 7);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    L.icon = function(options){
+        return new L.Icon(options);
+    }
+
+    var LeafIcon = L.Icon.extend({
+        options: {
+            iconSize: [32, 32],
+        }
+    });
+
+    var starbucksIcon = new LeafIcon({iconUrl: '../static/image/starbucks.png'})
+
+</script>
+
+{% endblock %}

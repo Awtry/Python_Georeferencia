@@ -1,0 +1,144 @@
+@font-face {
+    font-family: SantanaBold;
+    src: url(../fonts/Santana-Black.ttf);
+}
+
+@font-face {
+    font-family: Santana;
+    src: url(../fonts/Santana.ttf);
+}
+
+/*Sección de background */
+
+body {
+    background-color: lightgray;
+}
+
+/*Termina sección de background*/
+
+/* Sección de Navbar */
+
+.titulo {
+    font-size: 50px;
+    color: #E3E1DE
+}
+
+.titulo:hover {
+    color: #7AF9CA
+}
+
+.navbar-background {
+    background-color: #1D322C;
+}
+
+.navbar-collapse .navbar-nav > li > a {
+    color: #E3E1DE; 
+    font-family: SantanaBold
+}
+
+.navbar-collapse .navbar-nav > li > a:hover {
+    color: #7AF9CA;
+    font-family: SantanaBold
+}
+
+/* Animación del Navbar */
+nav ul li a,
+nav ul li a:after,
+nav ul li a:before {
+  transition: all .5s;
+}
+
+nav.stroke ul li a{
+  position: relative;
+}
+nav.stroke ul li a:after{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background: rgb(170, 170, 170);
+  height: 1px;
+}
+nav.stroke ul li a:hover:after {
+  width: 100%;
+}
+
+/* Termina sección de NavBar */
+
+
+/*Carrusel */
+.carrusel {
+    background-color: lightgray;
+    margin: 0;
+    padding-bottom: 0;
+}
+
+/*Ocultar botones de Carrusel*/
+.carousel-control-prev, .carousel-control-prev:hover, .carousel-control-next, .carousel-control-next:hover {
+    opacity: 0;
+    background-color: transparent;
+    border-style: none;
+}
+
+/* Termina carrusel */
+
+/* Sección del body */
+
+.bloqueFoto{
+    background-color: lightgray;
+    padding: 0px 32px;
+}
+
+.fotos {
+    margin-top: 3%;
+    margin-bottom: 10px;
+}
+
+/* Termina sección del body*/
+
+/* Sección del footer */
+
+.footer{
+    background-color: #1D322C;
+    color:#E3E1DE;
+}
+
+.separador {
+    margin-top: 30px;
+    font-family: SantanaBold;
+}
+
+.separador > p > a {
+    font-family: Santana;
+    color: #E3E1DE;
+}
+
+.separador > p > a {
+    color: #e3e1deb0;
+    
+}
+
+.nav-link{
+    letter-spacing: 3px;
+    font-style: normal;
+    font-size: small;
+    margin-left: 1vh;
+    margin-right: 1vh;
+}
+
+.listCard{
+    margin-top: 2vh; 
+    padding: 2vh;
+    width: 100%;
+    margin-left: 0; 
+    width: 100%; 
+    justify-content: left; 
+    align-items: left; 
+    text-align: left;
+}
+
+/* Termina sección del footer */
