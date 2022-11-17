@@ -28,6 +28,9 @@ urlpatterns = [
     path('listastarbucks/', views.listastarbucks, name='listastarbucks'),
     path('listastarbucksgraf/', views.listastarbucksgraf, name='listastarbucksgraf'),
     path('cargarMapa/', views.cargarMapa, name='cargarMapa'),
+    path('mapasvm/', views.mapasvm, name='mapasvm'),
+    path('mapsvmred/', views.mapsvmred, name='mapsvmred'),
+    
     
     
     #URL'S STYLE DEL PROYECTO

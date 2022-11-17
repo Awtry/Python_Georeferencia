@@ -26,6 +26,9 @@ def metricas(request):
 def graficos(request):
     return redirect('/listastarbucksgraf')
 
+def mapsvmred(request):
+    return redirect('/mapasvm')
+
 # LÓGICA
 #Así se mandan datos de py a html
 def prueba(request):
@@ -297,6 +300,25 @@ def listastarbucksgraf(request):
 
     return HttpResponse(template.render(context, request))
 
+def mapasvm(request):
+
+    datos = pd.read_excel(f'{os.path.dirname(os.path.abspath(__file__))}/static/data/starbucks_in_california.xlsx')
+
+    lat = datos['Latitude'] #Pos 9 
+    lon = datos['Longitude']#Pos 10
+    info = datos['name'].tolist()
+
+    LATITUD = lat.tolist()
+    LONGITUD = lon.tolist()
+
+    LAT = json.dumps(LATITUD)
+    LON = json.dumps(LONGITUD)
+    INFOR = json.dumps(info)
+
+    pagina = loader.get_template('mapaSVM.html')
+    context = {'LAT': LAT , 'LON': LON, 'INFOR': INFOR}
+
+    return HttpResponse(pagina.render(context, request))
 
 def cargarMapa(request):
 
