@@ -24,9 +24,8 @@
 </style>
 <!-- Mapa -->
 <form id="elemento" class="form">
-  <input id="coordLAT" value="{{LAT}}" type="hidden">
-  <input id="coordLON" value="{{LON}}" type="hidden">
-  <input id="info" value="{{INFOR}}" type="hidden">
+  <input id="valorX" value="{{Vx}}" type="hidden">
+  <input id="valorY" value="{{Vy}}" type="hidden">
   <!--    <input type="button" name="enviar" value="Enviar" onload="GUARDAMELA();"> -->
 </form>
 
@@ -102,22 +101,20 @@
 
   function GUARDAMELA() {
 
-    var LATI = document.getElementById('coordLAT').value;
-    var LONG = document.getElementById('coordLON').value;
-    var Info = document.getElementById('info').value;
+    var Vx = document.getElementById('valorX').value;
+    var Vy = document.getElementById('valorY').value;
 
-    var tamlat = LATI.length;
-    var tamlon = LONG.length;
+    //var tamlat = LATI.length;
+    //var tamlon = LONG.length;
 
-    var MiaLATI = JSON.parse(LATI);
-    var MiaLONG = JSON.parse(LONG);
-    var INFO = JSON.parse(Info);
+    /*var MiaVx = JSON.parse(Vx);
+    var MiaVy = JSON.parse(Vy);
 
-    for (let i = 0; i < MiaLATI.length; i++) {
+    /*for (let i = 0; i < MiaLATI.length; i++) {
       L.marker([MiaLATI[i], MiaLONG[i]], {
         icon: starbucksIcon
       }).addTo(map).bindPopup(INFO[i]);
-    }
+    }*/
   }
 
   coord = [36.22554926857518, -119.67373197692386]

@@ -4,10 +4,22 @@ from django.shortcuts import render, HttpResponse, redirect
 from django.template import loader
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 import simplejson as json
 import collections
 import os
+
+#Parte SVM
+from sklearn.svm import SVC
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn import datasets
+from sklearn import metrics
+
+#Parte KMeans
+from sklearn.cluster import KMeans
 #import folium
+
 
 # VARIABLES GLOBALES
 
@@ -302,21 +314,17 @@ def listastarbucksgraf(request):
 
 def mapasvm(request):
 
-    datos = pd.read_excel(f'{os.path.dirname(os.path.abspath(__file__))}/static/data/starbucks_in_california.xlsx')
+    bc = datasets.load_breast_cancer()
+    X = bc.data
+    y = bc.target
+ 
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=1, stratify=y)
 
-    lat = datos['Latitude'] #Pos 9 
-    lon = datos['Longitude']#Pos 10
-    info = datos['name'].tolist()
-
-    LATITUD = lat.tolist()
-    LONGITUD = lon.tolist()
-
-    LAT = json.dumps(LATITUD)
-    LON = json.dumps(LONGITUD)
-    INFOR = json.dumps(info)
+    Vx = "Mi"
+    Vy = "Miko"
 
     pagina = loader.get_template('mapaSVM.html')
-    context = {'LAT': LAT , 'LON': LON, 'INFOR': INFOR}
+    context = {'Vx': Vx , 'Vy': Vy}
 
     return HttpResponse(pagina.render(context, request))
 
