@@ -2,9 +2,13 @@ from cgitb import html
 from multiprocessing import context
 from django.shortcuts import render, HttpResponse, redirect
 from django.template import loader
+
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
+#Gráfico
+#import matplotlib.pyplot as plt
+from bokeh.plotting import figure, show, output_file
+
 import simplejson as json
 import collections
 import os
@@ -18,6 +22,7 @@ from sklearn import metrics
 
 #Parte KMeans
 from sklearn.cluster import KMeans
+import seaborn as sns
 #import folium
 
 
@@ -330,21 +335,112 @@ def mapasvm(request):
 
 def cargarMapa(request):
 
-     #NO OLVIDAR CAMBIAR LA RUTA DE MANERA INDIVIDUAL en cada uno de sus
-    # equipos, para LA LECTURA DEL ARCHIVO DE STARBUCKS_IN_CALIFORNIA.xlsx
-    datos = pd.read_excel(f'{os.path.dirname(os.path.abspath(__file__))}/static/data/starbucks_in_california.xlsx')
+    #Parte para KMwans
+    datosKmeans = pd.read_excel(f'{os.path.dirname(os.path.abspath(__file__))}/static/data/DatosEncuesta.xlsx')
 
-    lat = datos['Latitude'] #Pos 9 
-    lon = datos['Longitude']#Pos 10
-    info = datos['name'].tolist()
+    #Obtener los datos de latitud y longitud desde archivo excel
+    ExData = datosKmeans[['Latitud','Longitud']]
 
-    LATITUD = lat.tolist()
-    LONGITUD = lon.tolist()
+    #Tratar los datos como arreglo
+    K = ExData.iloc[:,[0,1]].values
 
-    LAT = json.dumps(LATITUD)
-    LON = json.dumps(LONGITUD)
-    INFOR = json.dumps(info)
+    #Arreglo para junstar los datos y meterlo para el método del codo.
+    wcss = []
+
+    for i in range(1,10):
+        kmeans = KMeans(n_clusters = i, init = 'k-means++', random_state = 1)
+        kmeans.fit(K)
+        wcss.append(kmeans.inertia_)
+
+    rango = np.array([1,2,3,4,5,6,7,8,9,10])
+    wcss = np.array(wcss)
+
+    rangoLista = rango.tolist()
+    Datos = wcss.tolist()
+
+    RangoJson = json.dumps(rangoLista)
+    DatosJson = json.dumps(Datos)
+
+    #------------------------------------
+
+    #Datos para mapa , puntos geográficos
+    #Una vez aplicado KMeans con los clusters 
+    kmeans = KMeans(n_clusters = 3, init = 'k-means++', random_state = 45)
+    #Se hace a predicción
+    y_KM = kmeans.fit_predict(K)
+
+    lat = datosKmeans['Latitud']
+    lon = datosKmeans['Longitud']
+
+    LatCus1 = np.array(K[y_KM == 0, 0])
+    LonCust1 = np.array(K[y_KM == 0, 1])
+
+    LatCus2 = np.array(K[y_KM == 1, 0])
+    LonCust2 = np.array(K[y_KM == 1, 1])
+
+    LatCus3 = np.array(K[y_KM == 2, 0])
+    LonCust3 = np.array(K[y_KM == 2, 1])
+
+    #-----------------
+
+    LATCentro1 = np.array(kmeans.cluster_centers_[0, 0])
+    LONCentro1 = np.array(kmeans.cluster_centers_[0, 1])
+
+    LATCentro2 = np.array(kmeans.cluster_centers_[1, 0])
+    LONCentro2 = np.array(kmeans.cluster_centers_[1, 1])
+
+    LATCentro3 = np.array(kmeans.cluster_centers_[2, 0])
+    LONCentro3 = np.array(kmeans.cluster_centers_[2, 1])
+
+    LATCentroG1 = np.array(kmeans.cluster_centers_[:, 0])
+    LONCentroG1 = np.array(kmeans.cluster_centers_[:, 1])
+
+    #----------------
+
+    LATITUD = json.dumps(lat.tolist())
+    LONGITUD = json.dumps(lon.tolist())
+
+    LAC1 = json.dumps(LatCus1.tolist())
+    LON1 = json.dumps(LonCust1.tolist())
+
+    LAC2 = json.dumps(LatCus2.tolist())
+    LON2 = json.dumps(LonCust2.tolist())
+
+    LAC3 = json.dumps(LatCus3.tolist())
+    LON3 = json.dumps(LonCust3.tolist())
+
+    #La tercera con dumps 
+    CLAT1 = json.dumps(LATCentro1.tolist())
+    CLON1 = json.dumps(LONCentro1.tolist())
+
+    CLAT2 = json.dumps(LATCentro2.tolist())
+    CLON2 = json.dumps(LONCentro2.tolist())
+
+    CLAT3 = json.dumps(LATCentro3.tolist())
+    CLON3 = json.dumps(LONCentro3.tolist())
+
+    LATCG1 = json.dumps(LATCentroG1.tolist())
+    LONCG1 = json.dumps(LONCentroG1.tolist())
+
+    
 
     pagina = loader.get_template('mapa.html')
-    context = {'LAT': LAT , 'LON': LON, 'INFOR': INFOR}
+    context = {'DatosJson': DatosJson
+            ,'RangoJson': RangoJson
+            , 'LAC1': LAC1
+            , 'LON1': LON1
+            , 'LAC2': LAC2
+            , 'LON2': LON2
+            , 'LAC3': LAC3
+            , 'LON3': LON3
+            , 'CLAT1': CLAT1
+            , 'CLON1': CLON1
+            , 'CLAT2': CLAT2
+            , 'CLON2': CLON2
+            , 'CLAT3': CLAT3
+            , 'CLON3': CLON3
+            , 'LATCG1': LATCG1
+            , 'LONCG1': LONCG1
+            , 'LATITUD': LATITUD
+            , 'LONGITUD': LONGITUD }
     return HttpResponse(pagina.render(context, request))
