@@ -22,8 +22,6 @@ urlpatterns = [
     #URL'S DEL PROYECTO
     path('', views.index, name='index'),
     path('mapa/', views.mapa, name='mapa'),
-    path('metricas/', views.metricas, name='metricas'),
-    path('graficos/', views.graficos, name='graficos'),
     path('prueba/', views.prueba, name='prueba'),
     path('listastarbucks/', views.listastarbucks, name='listastarbucks'),
     path('listastarbucksgraf/', views.listastarbucksgraf, name='listastarbucksgraf'),

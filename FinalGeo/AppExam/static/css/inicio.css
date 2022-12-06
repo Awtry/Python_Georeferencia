@@ -11,7 +11,7 @@
 /*Sección de background */
 
 body {
-    background-color: lightgray;
+    background-color: #FAFFFC;
 }
 
 /*Termina sección de background*/
@@ -20,24 +20,24 @@ body {
 
 .titulo {
     font-size: 50px;
-    color: #E3E1DE
+    color: #5E003F
 }
 
 .titulo:hover {
-    color: #7AF9CA
+    color: #995EED
 }
 
 .navbar-background {
-    background-color: #1D322C;
+    background-color: #D3D3D3;
 }
 
 .navbar-collapse .navbar-nav > li > a {
-    color: #E3E1DE; 
+    color: #5E003F; 
     font-family: SantanaBold
 }
 
 .navbar-collapse .navbar-nav > li > a:hover {
-    color: #7AF9CA;
+    color: #995EED;
     font-family: SantanaBold
 }
 
@@ -60,7 +60,7 @@ nav.stroke ul li a:after{
   width: 0%;
   content: '.';
   color: transparent;
-  background: rgb(170, 170, 170);
+  background: #995EED;
   height: 1px;
 }
 nav.stroke ul li a:hover:after {
@@ -103,24 +103,22 @@ nav.stroke ul li a:hover:after {
 /* Sección del footer */
 
 .footer{
-    background-color: #1D322C;
-    color:#E3E1DE;
+    background-color: #8a68da;
+    color:#5E003F;
 }
 
 .separador {
-    margin-top: 30px;
-    font-family: SantanaBold;
+    margin-top: 10px;
 }
 
 .separador > p > a {
-    font-family: Santana;
-    color: #E3E1DE;
+    color: #470a33;
 }
-
+/* 
 .separador > p > a {
     color: #e3e1deb0;
     
-}
+} */
 
 .nav-link{
     letter-spacing: 3px;
