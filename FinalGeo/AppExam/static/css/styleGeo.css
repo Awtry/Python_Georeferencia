@@ -8,13 +8,13 @@
     src: url(../fonts/Santana.ttf);
 }
 
-h1,h2,h3,h4 {
+/* h1,h2,h3,h4 {
     font-family: SantanaBold
 }
 
 p {
     font-family: Santana;
-}
+} */
 
 .card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -42,8 +42,11 @@ p {
 
 .divShadow {
     border: 1px solid;
-    box-shadow: 5px 10px 8px #888888;
+    border-color: #5E003F;
+    box-shadow: 5px 10px 8px #987bdb;
   }
+
+  /*987bdb*/
 
 .hidden {
   height: 0;
