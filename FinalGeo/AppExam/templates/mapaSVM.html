@@ -16,13 +16,13 @@
 <style>
   #map {
     width: 80%;
-    height: 50vh;
+    height: 55vh;
     margin: 20px;
   }
 
   #mapEdad {
     width: 80%;
-    height: 50vh;
+    height: 55vh;
     margin: 20px;
   }
 
@@ -69,16 +69,16 @@
           <div class="card col-12" style="margin-left: 0px;" id="CentraMapa">
 
             <div class="row">
-              <div class="col-12" style="border-style: solid; border-color: blue;">
-                <div class="card-body" style="border-style: solid; border-color: gray; margin: 0px;">
+              <div class="col-12">
+                <div class="card-body" >
                   <h5 class="card-title">Clase social vs Economía Personal</h5>
-                  <div class="row" style="border-style: solid; border-color: red;">
-                    <div class="col-6" style="border-style: solid; border-color: yellow;">
+                  <div class="row">
+                    <div class="col-6">
                       <label class="card-text"> Porcentaje de pruebas <label id="Train_EF1_H"></label> </label>
                       <br>
                       <label class="card-text"> Porcentaje de predicciones <label id="Test_EF1_H"></label> </label>
                     </div>
-                    <div class="col-6" style="border-style: solid; border-color: green;">
+                    <div class="col-6">
                       <table class="table">
                         <thead>
                           <tr>
@@ -125,21 +125,23 @@
 
           </div>
         </div>
+
+
         <!-- Columna derecha -->
         <div class="col-12 col-sm-12 col-md-6 col-lg-6 " style="margin: 0px;">
           <div class="card col-12" style="margin-left: 0px;" id="CentraMapa">
 
             <div class="row">
-              <div class="col-12" style="border-style: solid; border-color: blue;">
-                <div class="card-body" style="border-style: solid; border-color: gray; margin: 0px;">
+              <div class="col-12">
+                <div class="card-body">
                   <h5 class="card-title">Edad vs Economía Personal</h5>
-                  <div class="row" style="border-style: solid; border-color: red;">
-                    <div class="col-6" style="border-style: solid; border-color: yellow;">
+                  <div class="row">
+                    <div class="col-6">
                       <label class="card-text"> Porcentaje de pruebas <label id="Train_EF2_H"></label> </label>
                       <br>
                       <label class="card-text"> Porcentaje de predicciones <label id="Test_EF2_H"></label> </label>
                     </div>
-                    <div class="col-6" style="border-style: solid; border-color: green;">
+                    <div class="col-6">
                       <table class="table">
                         <thead>
                           <tr>
@@ -270,13 +272,13 @@
       DatosGenerales.push(L.marker([LAT[i], LON[i]]));
     }*/
 
-    var IconoClasista = new LeafIcon({ iconUrl: '../static/image/naranja.png' }); 
-    var IconHumano1 = new LeafIcon({ iconUrl: '../static/image/persona1.png' });
-    var IconHumano2 = new LeafIcon({ iconUrl: '../static/image/persona1.png' });
-    var IconHumano3 = new LeafIcon({ iconUrl: '../static/image/persona1.png' });
-    var IconHumano4 = new LeafIcon({ iconUrl: '../static/image/persona1.png' });
-    var IconHumano5 = new LeafIcon({ iconUrl: '../static/image/persona1.png' });
-    var IconHumano6 = new LeafIcon({ iconUrl: '../static/image/persona1.png' }); 
+    var IconoClasista = new LeafIcon({ iconUrl: '../static/image/Persona.png' }); 
+    var IconHumano1 = new LeafIcon({ iconUrl: '../static/image/Persona.png' });
+    var IconHumano2 = new LeafIcon({ iconUrl: '../static/image/cbaja.png' });
+    var IconHumano3 = new LeafIcon({ iconUrl: '../static/image/cmediabaja.png' });
+    var IconHumano4 = new LeafIcon({ iconUrl: '../static/image/cmedia.png' });
+    var IconHumano5 = new LeafIcon({ iconUrl: '../static/image/cmediaalta.png' });
+    var IconHumano6 = new LeafIcon({ iconUrl: '../static/image/calta.png' }); 
 
     for (let i = 0; i <= Clase_Social.length; i++) {
 
@@ -387,9 +389,9 @@
    
     //Para cambiar los iconos es solo poner la ruta en donde se encuentra
     //Ya la variable se acomoda sola
-    var IconoGeneralEdad = new LeafIcon({ iconUrl: '../static/image/Verde.png' });
-    var IconHumano1 = new LeafIcon({ iconUrl: '../static/image/naranja.png' });
-    var IconHumano2 = new LeafIcon({ iconUrl: '../static/image/rojo.png' });
+    var IconoGeneralEdad = new LeafIcon({ iconUrl: '../static/image/Persona.png' });
+    var IconHumano1 = new LeafIcon({ iconUrl: '../static/image/20menos.png' });
+    var IconHumano2 = new LeafIcon({ iconUrl: '../static/image/20mas.png' });
     
 
     for (let i = 0; i <= Edad_Humana.length; i++) {
