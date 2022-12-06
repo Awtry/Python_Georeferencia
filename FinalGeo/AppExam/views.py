@@ -15,10 +15,12 @@ import os
 
 #Parte SVM
 from sklearn.svm import SVC
-from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn import datasets
 from sklearn import metrics
+from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
 
 #Parte KMeans
 from sklearn.cluster import KMeans
@@ -319,17 +321,124 @@ def listastarbucksgraf(request):
 
 def mapasvm(request):
 
-    bc = datasets.load_breast_cancer()
-    X = bc.data
-    y = bc.target
+    DF_BASE = pd.read_excel(f'{os.path.dirname(os.path.abspath(__file__))}/static/data/DatosEncuesta.xlsx')
+    
+    ##Enfoque 1
+    Enfoque1 = DF_BASE
+    Enfoque2 = DF_BASE
+
+    Df_Social_Ganancia = Enfoque1[['Cat_Gan_Mensual'
+                ,'Nivel_Estudio'
+                ,'Cat_Asegurado'
+                ,'Cat_cuenta_Bancaria'
+                ,'Cat_fondo_emergencia'
+                ,'Cat_Dependencia'
+                ,'Cat_Gasto_Mensual'
+                ,'Cat_Ingre_Ext'
+                ,'Cat_Mas_Gastos'
+                ,'Cat_TengoDeuda'
+                ,'Cat_Edu_Financiera'
+                ,'Cat_Ahor_Inver'
+                ,'Cat_Ha_Invertido'
+                ,'Cat_pago_Cred_Deb_Efe'
+                ,'Cat_Casa_Prop_Rent'
+                ,'Cat_Dependen_TI'
+                ,'Cat_Pos_Social']]
+
+    XC = Df_Social_Ganancia.drop('Cat_Pos_Social', axis = 1).copy()
+    yC = Df_Social_Ganancia['Cat_Pos_Social'].copy()
+
+    XSG = np.array(XC)
+    ySG = np.array(yC)
+
+    # Split dataset into training set and test set
+    # 70% training and 30% test
+    XSG_train, XSG_test, ySG_train, ySG_test = train_test_split(XSG, ySG, test_size=0.2,random_state=100)
+
+    #from sklearn.model_selection import GridSearchCV
+
+    #Create a svm Classifier and hyper parameter tuning 
+    mlSG = SVC() 
+    
+    # defining parameter range
+    param_gridSG = {'C': [ 1, 10, 100, 1000,10000], 
+                'gamma': [1,0.1,0.01,0.001,0.0001],
+                'kernel': ['rbf']} 
+    
+    gridSG = GridSearchCV(mlSG, param_gridSG, refit = True, verbose = 1, cv=2)
+    
+    # fitting the model for grid search
+    grid_searchSG = gridSG.fit(XSG_train, ySG_train)
+
+    #Accuracy for our training dataset
+    Train_EF1 = round(grid_searchSG.best_score_ *100, 2)
+
+    #Accuracy for our testing datase
+    ySG_test_hat = gridSG.predict(XSG_test)
+    Test_EF1 = round(accuracy_score(ySG_test,ySG_test_hat)*100, 2)
+
+
+    ##Enfoque 2
+    EdadGanancia = Enfoque2[['Cat_Gan_Mensual'
+              ,'Cat_Gasto_Mensual'
+              ,'Cat_Mas_Gastos'
+              ,'Cat_Ahor_Inver'
+              ,'Cat_Dependen_TI'
+              ,'Cat_fondo_emergencia'
+              ,'Cat_Edad']]
+
+    XSeg = EdadGanancia.drop('Cat_Edad', axis = 1).copy()
+    ySeg = EdadGanancia['Cat_Edad'].copy()
+
+    X2 = np.array(XSeg)
+    y2 = np.array(ySeg)
+
+    X2_train, X2_test, y2_train, y2_test = train_test_split(X2, y2, test_size=0.2,random_state=100)
+
+    ml2 = SVC() 
+  
+    # defining parameter range
+    param_grid2 = {'C': [ 1, 10, 100, 1000,10000], 
+                'gamma': [1,0.1,0.01,0.001,0.0001],
+                'kernel': ['rbf']} 
+    
+    grid2 = GridSearchCV(ml2, param_grid2, refit = True, verbose = 1, cv=8)
+    
+    # fitting the model for grid search
+    grid_search2 = grid2.fit(X2_train, y2_train)
+
+    #Porcentaje de training
+    Train_EF2 = round(grid_search2.best_score_ *100, 2)
+
+    #Porcentaje de testeo
+    y2_test_hat=grid2.predict(X2_test)
+    Test_EF2 = round(accuracy_score(y2_test,y2_test_hat)*100, 2)
+
+    ## Clasificación para MAPA, markers y demás
+    Clase_Social = np.array(Df_Social_Ganancia['Cat_Pos_Social'].copy())
+    Edad_Huamana = np.array(EdadGanancia['Cat_Edad'].copy())
+    Latitud = np.array(DF_BASE['Latitud'])
+    Longitud = np.array(DF_BASE['Longitud'])
+
+    #Conversión de datos Y JSON
+    Clase_Social_Lista = json.dumps(Clase_Social.tolist())
+    Edad_Humana_Lista = json.dumps(Edad_Huamana.tolist())
+    Lat = json.dumps(Latitud.tolist())
+    Lon = json.dumps(Longitud.tolist())
+
  
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=1, stratify=y)
 
-    Vx = "Mi"
-    Vy = "Miko"
-
+    # Mandar los datos
     pagina = loader.get_template('mapaSVM.html')
-    context = {'Vx': Vx , 'Vy': Vy}
+    context = {'Train_EF1': Train_EF1
+              ,'Test_EF1': Test_EF1
+              ,'Train_EF2':Train_EF2
+              ,'Test_EF2': Test_EF2
+              ,'Clase_Social_Lista': Clase_Social_Lista
+              ,'Edad_Humana_Lista': Edad_Humana_Lista
+              ,'Lat': Lat
+              ,'Lon': Lon
+              }
 
     return HttpResponse(pagina.render(context, request))
 

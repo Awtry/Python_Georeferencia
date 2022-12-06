@@ -210,11 +210,7 @@
         for (let i = 0; i < LATCJS1.length; i++) {
             DatosGenerales.push(L.marker([LATCJS1[i], LONCJS1[i]]));
         }
-/*
-        for (let i = 0; i < MiaLATI.length; i++) {
-            DatosGenerales.push(L.marker([MiaLATI[i], MiaLONG[i]], { icon: IconTodos }));
-        }
-*/
+
         if (llave) {
             var LeafIcon = L.Icon.extend({
                 options: {
@@ -240,7 +236,7 @@
         }
 
         
-
+        debugger;
         var PrimeraCapa = L.layerGroup(DatosGenerales);
 
         var arregloCentroGlobal = L.layerGroup(ArrCenGlobal);
@@ -359,27 +355,6 @@
         }
 
     }
-
-
-    //coord = [21.121703245609368, -101.67123619160587]
-
-    //var map = L.map('map').setView(coord, 11);
-/*
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-    
-        L.icon = function (options) {
-            return new L.Icon(options);
-        }
-    
-        var LeafIcon = L.Icon.extend({
-            options: {
-                iconSize: [32, 32],
-            }
-        });
-    */
-    //var starbucksIcon = new LeafIcon({ iconUrl: '../static/image/starbucks.png' })
 
 </script>
 {% endblock %}

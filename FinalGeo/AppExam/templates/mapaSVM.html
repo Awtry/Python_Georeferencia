@@ -6,11 +6,21 @@
 <!-- Estilo del mapa -->
 
 <head>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
 </head>
 
 <style>
   #map {
+    width: 80%;
+    height: 50vh;
+    margin: 20px;
+  }
+
+  #mapEdad {
     width: 80%;
     height: 50vh;
     margin: 20px;
@@ -24,57 +34,134 @@
 </style>
 <!-- Mapa -->
 <form id="elemento" class="form">
-  <input id="valorX" value="{{Vx}}" type="hidden">
-  <input id="valorY" value="{{Vy}}" type="hidden">
-  <!--    <input type="button" name="enviar" value="Enviar" onload="GUARDAMELA();"> -->
+  <input id="Train_EF1" value="{{Train_EF1}}" type="hidden">
+  <input id="Test_EF1" value="{{Test_EF1}}" type="hidden">
+  <input id="Train_EF2" value="{{Train_EF2}}" type="hidden">
+  <input id="Test_EF2" value="{{Test_EF2}}" type="hidden">
+
+  <!-- <input id="ValC1" value="{{ValC1}}" type="hidden"> -->
+
+  <input id="Clase_Social_Lista" value="{{Clase_Social_Lista}}"  type="hidden">
+  <input id="Edad_Humana_Lista" value="{{Edad_Humana_Lista}}"  type="hidden">
+
+  <input id="Lat" value="{{Lat}}"  type="hidden">
+  <input id="Lon" value="{{Lon}}"  type="hidden">
+
+
+  <input id="ValC5" value="{{ValC5}}"  type="hidden">
+  <input id="ValC6" value="{{ValC6}}"  type="hidden">
 </form>
 
 
 <div class="container-fluid" style="margin: 0px;">
   <div class="row">
-    <div class="col-12" id="centraMapa">
+    <div class="col-6" id="centraMapa">
       <div class="col" id="map"></div>
+    </div>
+    <div class="col-6" id="centraMapa">
+      <div class="col" id="mapEdad"></div>
     </div>
 
     <div class="col-12">
-      <div class="col-12">
-        <form class="row gy-2 gx-3 align-items-center">
-          <div class="col-12 d-grid">
-            <button type="submit" class="btn btn-primary ">Cargar
-              categorías no clasistas</button>
-          </div>
-        </form>
-      </div>
+      <div class="row">
+        <!-- Columna izquierda -->
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 " style="margin: 0px;">
+          <div class="card col-12" style="margin-left: 0px;" id="CentraMapa">
 
-      <div class="col-12">
-        <div class="row">
-            <!-- Columna izquierda -->
-          <div class="col" style="margin: 0px;" >
-            <div class="card col-12" style="margin-left: 0px;" >
-              <div class="row">
-                <div class="col-12">
-                  <div class="card-body">
-                    <h5 class="card-title">Propiedad clasista 1</h5>
-                    <p class="card-text">This is a wider card
-                      with supporting text below as a natural
-                      lead-in to additional content. This
-                      content is a little bit longer.</p>
+            <div class="row">
+              <div class="col-12" style="border-style: solid; border-color: blue;">
+                <div class="card-body" style="border-style: solid; border-color: gray; margin: 0px;">
+                  <h5 class="card-title">Clase social vs Economía Personal</h5>
+                  <div class="row" style="border-style: solid; border-color: red;">
+                    <div class="col-6" style="border-style: solid; border-color: yellow;">
+                      <label class="card-text"> Porcentaje de pruebas <label id="Train_EF1_H"></label> </label>
+                      <br>
+                      <label class="card-text"> Porcentaje de predicciones <label id="Test_EF1_H"></label> </label>
+                    </div>
+                    <div class="col-6" style="border-style: solid; border-color: green;">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Clase Social</th>
+                            <th scope="col">Cuenta</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">Sin respuesta</th>
+                            <td id="SumClase1">Mark</td>
+                            
+                          </tr>
+                          <tr>
+                            <th scope="row">Baja - Baja</th>
+                            <td id="SumClase2">Mark</td>
+                            
+                          </tr>
+                          <tr>
+                            <th scope="row">Media - Baja</th>
+                            <td id="SumClase3">Jacob</td>
+                            
+                          </tr>
+                          <tr>
+                            <th scope="row">Media</th>
+                            <td colspan="2" id="SumClase4">Larry the Bird</td>
+  
+                          </tr>
+                          <tr>
+                            <th scope="row">Media - Alta</th>
+                            <td colspan="2" id="SumClase5">Larry the Bird</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Alta - Alta</th>
+                            <td colspan="2" id="SumClase6">Larry the Bird</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+
           </div>
-          <!-- Columna derecha -->
-          <div class="col" style="margin: 0px;" >
-            <div class="card col-12" style="margin-left: 0px;" id="CentraMapa">
-              <div class="row">
-                <div class="col-12">
-                  <div class="card-body">
-                    <h5 class="card-title">Propiedad (más) clasista 2</h5>
-                    <p class="card-text">This is a wider card
-                      with supporting text below as a natural
-                      lead-in to additional content. This
-                      content is a little bit longer.</p>
+        </div>
+        <!-- Columna derecha -->
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 " style="margin: 0px;">
+          <div class="card col-12" style="margin-left: 0px;" id="CentraMapa">
+
+            <div class="row">
+              <div class="col-12" style="border-style: solid; border-color: blue;">
+                <div class="card-body" style="border-style: solid; border-color: gray; margin: 0px;">
+                  <h5 class="card-title">Edad vs Economía Personal</h5>
+                  <div class="row" style="border-style: solid; border-color: red;">
+                    <div class="col-6" style="border-style: solid; border-color: yellow;">
+                      <label class="card-text"> Porcentaje de pruebas <label id="Train_EF2_H"></label> </label>
+                      <br>
+                      <label class="card-text"> Porcentaje de predicciones <label id="Test_EF2_H"></label> </label>
+                    </div>
+                    <div class="col-6" style="border-style: solid; border-color: green;">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Edad</th>
+                            <th scope="col">Cuenta</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">De 18 a 20</th>
+                            <td id="SumEdad1">Mark</td>
+                            
+                          </tr>
+                          <tr>
+                            <th scope="row">De 20 en adelante</th>
+                            <td id="SumEdad2">Mark</td>
+                            
+                          </tr>
+                          
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -89,54 +176,284 @@
 </div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+  integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+  integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+  integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 <!-- Scrip para el manejo del map -->
 
 <script>
-  window.onload = function() {
+  //Leer datos
+  var Train_EF1 = JSON.parse(document.getElementById('Train_EF1').value);
+  var Test_EF1 = JSON.parse(document.getElementById('Test_EF1').value);
+
+  //Mandar objetos a HTML para que muestrén en html 
+  var Train_EF1_H = document.getElementById('Train_EF1_H');
+  Train_EF1_H.innerHTML = Train_EF1;
+  var Test_EF1_H = document.getElementById('Test_EF1_H');
+  Test_EF1_H.innerHTML = Test_EF1;
+
+  //Lectura de datos usados en mapas
+  var Clase_Social = JSON.parse(document.getElementById('Clase_Social_Lista').value);
+
+
+  //Segundo enfoque 
+  var Train_EF2 = JSON.parse(document.getElementById('Train_EF2').value);
+  var Test_EF2 = JSON.parse(document.getElementById('Test_EF2').value);
+
+  var Train_EF2_H = document.getElementById('Train_EF2_H');
+  var Test_EF2_H = document.getElementById('Test_EF2_H');
+
+  Train_EF2_H.innerHTML = Train_EF2;
+  Test_EF2_H.innerHTML = Test_EF2;
+
+  var Edad_Humana = JSON.parse(document.getElementById('Edad_Humana_Lista').value);
+
+  LAT = JSON.parse(document.getElementById('Lat').value);
+  LON = JSON.parse(document.getElementById('Lon').value);
+
+  var Clase1 = 0, Clase2 = 0; Clase3 = 0; Clase4 = 0; Clase5 = 0; Clase6 = 0;
+  var C1_Edad = 0; C2_Edad = 0;
+
+  //Mostrar sumatora de los datos colectados
+  var SumClase1 = document.getElementById('SumClase1');
+  var SumClase2 = document.getElementById('SumClase2');
+  var SumClase3 = document.getElementById('SumClase3');
+  var SumClase4 = document.getElementById('SumClase4');
+  var SumClase5 = document.getElementById('SumClase5');
+  var SumClase6 = document.getElementById('SumClase6');
+
+  //Segunda parte Edad
+  var SumEdad1 = document.getElementById('SumEdad1');
+  var SumEdad2 = document.getElementById('SumEdad2');
+
+  
+
+  //Cosa de mapas
+
+  var coord = [21.121703245609368, -101.67123619160587];
+
+  var LeafIcon = L.Icon.extend({
+    options: {
+      iconSize: [35, 50],
+    }
+  });
+
+  var IconTodos;
+
+  var layerControl;
+
+  var llave = true;
+
+
+  window.onload = function () {
     GUARDAMELA();
+    EDAD();
   };
 
   function GUARDAMELA() {
 
-    var Vx = document.getElementById('valorX').value;
-    var Vy = document.getElementById('valorY').value;
+    var DatosGenerales = [];
+    var SinRespuesta = [];
+    var BajaBaja = [];
+    var MediaBaja = [];
+    var Media = [];
+    var MediaAlta = [];
+    var AltaAlta = [];
 
-    //var tamlat = LATI.length;
-    //var tamlon = LONG.length;
+    console.log("Entro a guardamela")
 
-    /*var MiaVx = JSON.parse(Vx);
-    var MiaVy = JSON.parse(Vy);
-
-    /*for (let i = 0; i < MiaLATI.length; i++) {
-      L.marker([MiaLATI[i], MiaLONG[i]], {
-        icon: starbucksIcon
-      }).addTo(map).bindPopup(INFO[i]);
+    //-------------------------
+    /*for (let i = 0; i < LAT.length; i++) {
+      DatosGenerales.push(L.marker([LAT[i], LON[i]]));
     }*/
-  }
 
-  coord = [36.22554926857518, -119.67373197692386]
+    var IconoClasista = new LeafIcon({ iconUrl: '../static/image/naranja.png' }); 
+    var IconHumano1 = new LeafIcon({ iconUrl: '../static/image/persona1.png' });
+    var IconHumano2 = new LeafIcon({ iconUrl: '../static/image/persona1.png' });
+    var IconHumano3 = new LeafIcon({ iconUrl: '../static/image/persona1.png' });
+    var IconHumano4 = new LeafIcon({ iconUrl: '../static/image/persona1.png' });
+    var IconHumano5 = new LeafIcon({ iconUrl: '../static/image/persona1.png' });
+    var IconHumano6 = new LeafIcon({ iconUrl: '../static/image/persona1.png' }); 
 
-  var map = L.map('map').setView(coord, 7);
+    for (let i = 0; i <= Clase_Social.length; i++) {
 
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-  }).addTo(map);
+      switch (Clase_Social[i]) {
+        case 1:
 
-  L.icon = function(options) {
-    return new L.Icon(options);
-  }
-
-  var LeafIcon = L.Icon.extend({
-    options: {
-      iconSize: [32, 32],
+          //#Sin respuesta
+          console.log('Entro al 1');
+          DatosGenerales.push(L.marker([LAT[i], LON[i]], { icon: IconoClasista }));
+          SinRespuesta.push(L.marker([LAT[i], LON[i]], { icon: IconHumano1 }));
+          Clase1++;
+          break;
+        case 2:
+          //#Baja - baja
+          DatosGenerales.push(L.marker([LAT[i], LON[i]], { icon: IconoClasista }));
+          BajaBaja.push(L.marker([LAT[i], LON[i]], { icon: IconHumano2 }));
+          Clase2++;
+          break;
+        case 3:
+          //#Media - baja
+          DatosGenerales.push(L.marker([LAT[i], LON[i]], { icon: IconoClasista }));
+          MediaBaja.push(L.marker([LAT[i], LON[i]], { icon: IconHumano3 }));
+          Clase3++;
+          break;
+        case 4:
+          //#Media
+          DatosGenerales.push(L.marker([LAT[i], LON[i]], { icon: IconoClasista }));
+          Media.push(L.marker([LAT[i], LON[i]], { icon: IconHumano4 }));
+          Clase4++;
+          break;
+        case 5:
+          //#Media alta
+          DatosGenerales.push(L.marker([LAT[i], LON[i]], { icon: IconoClasista }));
+          MediaAlta.push(L.marker([LAT[i], LON[i]], { icon: IconHumano5 }));
+          Clase5++;
+          break;
+        case 6:
+          //#Alta - alta
+          DatosGenerales.push(L.marker([LAT[i], LON[i]], { icon: IconoClasista }));
+          AltaAlta.push(L.marker([LAT[i], LON[i]], { icon: IconHumano6 }));
+          Clase6++;
+          break;
+        default:
+          console.log('Entro al default');
+          break;
+      }
     }
-  });
+    //-------------------------
 
-  var starbucksIcon = new LeafIcon({
-    iconUrl: '../static/image/starbucks.png'
-  })
+   
+    SumClase1.innerHTML = Clase1;
+    SumClase2.innerHTML = Clase2;
+    SumClase3.innerHTML = Clase3; 
+    SumClase4.innerHTML = Clase4;
+    SumClase5.innerHTML = Clase5;
+    SumClase6.innerHTML = Clase6;
+
+    var PrimeraCapa = L.layerGroup(DatosGenerales);
+
+    var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    });
+
+    L.icon = function (options) {
+      return new L.Icon(options);
+    }
+
+    var map = L.map('map', {
+      center: coord,
+      zoom: 12,
+      layers: [osm, PrimeraCapa] //, arregloDatosGlobal
+    });
+
+    var baseMaps = {
+      "OpenStreetMap": osm
+    };
+
+    var overlayMaps = {
+      "<span style='color: red'>Todos</span>": PrimeraCapa,
+    };
+
+    layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
+    var SN = L.layerGroup(SinRespuesta);
+    var BBJ = L.layerGroup(BajaBaja);
+    var MB = L.layerGroup(MediaBaja);
+    var M = L.layerGroup(Media);
+    var MA = L.layerGroup(MediaAlta); 
+    var AA = L.layerGroup(AltaAlta); 
+
+
+    layerControl.addOverlay(SN, "Sinrespuesta");
+    layerControl.addOverlay(BBJ, "Baja baja");
+    layerControl.addOverlay(MB, "Media baja");
+    layerControl.addOverlay(M, "Media");
+    layerControl.addOverlay(MA, "Media alta");
+    layerControl.addOverlay(AA, "Alta alta");
+  }
+
+  function EDAD(){
+    var DatosGeneralesEdad = [];
+    var PrimerGrupo = [];
+    var SegundoGrupo = [];
+
+    console.log("Entro a Guardame la edad")
+
+    //-------------------------
+   
+    //Para cambiar los iconos es solo poner la ruta en donde se encuentra
+    //Ya la variable se acomoda sola
+    var IconoGeneralEdad = new LeafIcon({ iconUrl: '../static/image/Verde.png' });
+    var IconHumano1 = new LeafIcon({ iconUrl: '../static/image/naranja.png' });
+    var IconHumano2 = new LeafIcon({ iconUrl: '../static/image/rojo.png' });
+    
+
+    for (let i = 0; i <= Edad_Humana.length; i++) {
+
+      switch (Edad_Humana[i]) {
+        case 1:
+
+          //#Sin respuesta
+          console.log('Entro al 1');
+          DatosGeneralesEdad.push(L.marker([LAT[i], LON[i]], { icon: IconoGeneralEdad }));
+          PrimerGrupo.push(L.marker([LAT[i], LON[i]], { icon: IconHumano1 }));
+          C1_Edad++;
+          break;
+        case 2:
+          //#Baja - baja
+          DatosGeneralesEdad.push(L.marker([LAT[i], LON[i]], { icon: IconoGeneralEdad }));
+          SegundoGrupo.push(L.marker([LAT[i], LON[i]], { icon: IconHumano2 }));
+          C2_Edad++;
+          break;
+       
+        default:
+          console.log('Entro al default de edad');
+          break;
+      }
+    }
+    //-------------------------
+
+   
+    SumEdad1.innerHTML = C1_Edad;
+    SumEdad2.innerHTML = C2_Edad;
+   
+
+    var CapaUno = L.layerGroup(DatosGeneralesEdad);
+
+    var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    });
+
+    L.icon = function (options) {
+      return new L.Icon(options);
+    }
+
+    var map = L.map('mapEdad', {
+      center: coord,
+      zoom: 12,
+      layers: [osm, CapaUno] //, arregloDatosGlobal
+    });
+
+    var baseMaps = {
+      "OpenStreetMap": osm
+    };
+
+    var overlayMaps = {
+      "<span style='color: red'>Todos</span>": CapaUno,
+    };
+
+    layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
+    var PG = L.layerGroup(PrimerGrupo);
+    var SG = L.layerGroup(SegundoGrupo);
+
+    layerControl.addOverlay(PG, "Primer grupo");
+    layerControl.addOverlay(SG, "Segundo grupo");
+
+  }
 </script>
 {% endblock %}
